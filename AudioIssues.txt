@@ -1,0 +1,49 @@
+Backup with usefull infos about Fixing Audio issues:
+
+ recently switched from Cinnamon to XFCE and instantly updated to 35 afterwards. Ever since that, after some minutes of not listening to audio, the output port of my "Built-in Audio Analog Stereo" switches from Headphones to Speakers. It never happened while there was audio playing, but it's still annoying. I don't (un)plug the headset or anything and it's 3.5mm, not Bluetooth or any sort of wireless system.
+
+I couldn't find a way to set the output port, only the sink.
+
+Is there any way to stop this from happening?
+
+Update:
+
+I can fix the behaviour by switching the priority of the headphones in /usr/share/alsa-card-profile/mixer/paths/analog-output-headphones.conf with that of the speakers in /usr/share/alsa-card-profile/mixer/paths/analog-output-speaker.conf. I'm not 100% happy, because I'd prefer a user configuration, but it works for now.
+
+========================
+
+
+When signal is lost to during sleep, Pulse Audio is automatically configured to activate the default source (your HDMI). Upon resume the sound device is still on HDMI. To override this setting, tell Pulse Audio to never switch sound devices automatically:
+
+edit the file /etc/pulse/default.pa
+find the line load-module module-switch-on-port-available
+insert a # at the beginning of the line to disable automatic port switching
+save file and exit editor
+type pulseaudio -k to reload configuration
+
+//to get linein as playback device
+
+pacmd load-module module-loopback latency_msec=5
+
+config your settings until it works. create a script file with that command, reboot pc, run script and check if it works.
+if all works well add the folling to your /etc/pulse/default.pa
+
+load-module module-loopback latency_msec=5
+
+
+==========================
+PIPEWIRE audio output through HDMI and HEADSET
+
+I finally found the answer after reporting a bug and getting a response to my question. The solution is so amazingly simple:
+
+Run:
+
+pactl load-module module-combine-sink
+And you get the same functionality with PipeWire.
+
+If I'm understanding these instructions correctly, you can make this permanent by copying /usr/share/pipewire/pipewire-pulse.conf to ~/.config/pipewire/pipewire-pulse.conf and adding:
+
+context.exec = [
+    { path = "pactl"  args = "load-module module-combine-sink" }
+]
+Then saving the file. Alternatively, you can add the first command to your startup applications.

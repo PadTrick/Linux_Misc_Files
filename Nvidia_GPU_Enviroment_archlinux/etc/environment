@@ -1,0 +1,20 @@
+#
+# This file is parsed by pam_env module
+#
+# Syntax: simple "KEY=VAL" pairs on separate lines
+#
+
+#According to Nvidia, the cause of this constant re-generation is that most recent drivers produce relatively large shader caches, and given that the default space limit/threshold in the driver is small, then the driver itself will try to delete the cache of same/other games to make room - thus forcing cache recreation each time.
+
+#It has been suggested that setting the following flags in your profile (i.e. inside the file ~/.profile or similar) may help with the bloated shader cache that most recent Nvidia drivers seem to produce.
+
+# Enable shader disk cache per game instead of regenerating the cache at every
+# game launch. The disk cache path should no longer be required, however if
+# the shader cache is being regenerated each launch, try specifying it.
+__GL_SHADER_DISK_CACHE=1
+__GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1
+__GL_SHADER_DISK_CACHE_SIZE=100000000000
+#__GL_SHADER_DISK_CACHE_PATH=/var/cache/shaders
+
+# Enable threaded optomisation for OpenGL.
+__GL_THREADED_OPTIMIZATION=1

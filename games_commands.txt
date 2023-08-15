@@ -1,0 +1,9 @@
+#Commands i use for Wine/Proton Games. Maybe be different for you.
+
+Wine/Proton Launch Commands:
+DXVK_ENABLE_NVAPI=1 PROTON_ENABLE_NVAPI=1 PROTON_HIDE_NVIDIA_GPU=0 gamemoderun %command%
+
+Ubisoft launcher Game shortcuts
+Tom Clancy's The Division™ : uplay://launch/568/0 DXVK_ENABLE_NVAPI=1 PROTON_ENABLE_NVAPI=1 PROTON_HIDE_NVIDIA_GPU=0 gamemoderun %command%
+Tom Clancy's The Division® 2 : uplay://launch/4932/0 DXVK_ENABLE_NVAPI=1 PROTON_ENABLE_NVAPI=1 PROTON_HIDE_NVIDIA_GPU=0 gamemoderun %command% PROTON_EAC_RUNTIME="/home/padtrick/.local/share/Steam/steamapps/common/Proton EasyAntiCheat Runtime/"
+Tom Clancy's Ghost Recon® Breakpoint : uplay://launch/11903/0 DXVK_ENABLE_NVAPI=1 PROTON_ENABLE_NVAPI=1 PROTON_HIDE_NVIDIA_GPU=0 gamemoderun %command%

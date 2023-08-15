@@ -1,0 +1,22 @@
+Fixing Archinstall error on updating keyring:
+sudo pacman -S archlinux-keyring
+
+another solution maybe
+
+killall gpg-agent
+rm -rf /etc/pacman.d/gnupg
+pacman-key --init
+pacman-key --populate archlinux
+
+========================================
+
+
+Archinstall WiFi Setup:
+YOURDEVICE = your wifi device(example 'wlan0' for me)
+SSID = your wifi hotspot name at home/work
+PASSPHRASE = your wifi password
+
+iwctl device list
+iwctl station YOURDEVICE scan
+iwctl station YOURDEVICE get-networks
+iwctl --passphrase=PASSPHRASE station YOURDEVICE connect SSID
