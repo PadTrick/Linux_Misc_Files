@@ -1,5 +1,16 @@
 #!/bin/bash
 WORKING_DIR=$(pwd)
+#Yet another yogurt. Pacman wrapper and AUR helper.
+echo "Installing yay"
+echo "creating dir $HOME/git and cloning all packages into it"
+mkdir $HOME/git
+cd $HOME/git
+echo "cloning yay to $HOME/git"
+git clone https://aur.archlinux.org/yay.git
+echo "Installing yay"
+cd yay && makepkg -si
+cd $HOME/git
+echo "yay installed !!!"
 #XBOX Drivers
 echo -e "Install Xbox One Wireless Gamepad Driver ?"
 PS2='Select: '
