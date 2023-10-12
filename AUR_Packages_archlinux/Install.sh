@@ -11,6 +11,7 @@ echo "Installing yay"
 cd yay && makepkg -si
 cd $HOME/git
 echo "yay installed !!!"
+clear
 #XBOX Drivers
 echo -e "Install Xbox One Wireless Gamepad Driver ?"
 PS2='Select: '
@@ -156,21 +157,21 @@ done
 
 echo "Installing ..."
 
-sudo yay -Syyu
+yay -Syyu
 
 if [ "$INSTALL_VSC" == "Yes" ]; then
     echo "Installing Visual Studio Code"
-    sudo yay -S visual-studio-code-bin
+    yay -S visual-studio-code-bin
 fi
 
 if [ "$INSTALL_OBS" == "Yes" ]; then
     echo "Installing OBS Studio Git"
-    sudo yay -S obs-studio-git
+    yay -S obs-studio-git
 fi
 
 if [ "$XBOX_DRIVER" == "Yes" ]; then
     echo "Installing Xbox One Wireless Gamepad Drivers"
-    sudo yay -S xone-dkms xone-dongle-firmware
+    yay -S xone-dkms xone-dongle-firmware
     echo "Xbox One Gamepad Driver installed !!!"
 fi
 
@@ -189,17 +190,17 @@ fi
 
 if [ "$INSTALL_FIRMWARE" == "Yes" ]; then
     echo "Installing ast, aic94xx & wd719x Firmware "
-	sudo yay -S ast-fw aic94xx-firmware wd719x-firmware
+	yay -S ast-fw aic94xx-firmware wd719x-firmware
     echo "All Firmwares are installed !!!"
 fi
 
 if [ "$INSTALL_GAMESCOPE" == "Yes" ]; then
     echo "Installing Gamescope-Plus"
-	sudo yay -S ast-fw gamescope-plus lib32-gamescope-plus
+	yay -S ast-fw gamescope-plus lib32-gamescope-plus
     echo "Gamescope installed !!!"
 fi
 
-sudo yay -Syyu
-sudo yay -S downgrade protontricks-git protonup-qt yay cpupower-gui
+yay -Syyu
+yay -S downgrade protontricks-git protonup-qt yay cpupower-gui
 
 echo "Installation finished. Please reboot now !!!"
