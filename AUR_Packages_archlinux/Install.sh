@@ -196,7 +196,7 @@ fi
 
 if [ "$INSTALL_GAMESCOPE" == "Yes" ]; then
     echo "Installing Gamescope-Plus"
-	yay -S ast-fw gamescope-plus lib32-gamescope-plus
+	yay -S gamescope-plus lib32-gamescope-plus
     echo "Gamescope installed !!!"
 fi
 
