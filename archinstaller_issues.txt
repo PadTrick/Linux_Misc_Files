@@ -10,6 +10,12 @@ pacman-key --populate archlinux
 
 ========================================
 
+WiFi Offline:
+
+rfkill unblock wlan
+ip link set wlan0 up
+
+========================================
 
 Archinstall WiFi Setup:
 YOURDEVICE = your wifi device(example 'wlan0' for me)
