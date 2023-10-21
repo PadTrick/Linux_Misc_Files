@@ -171,7 +171,7 @@ fi
 
 if [ "$XBOX_DRIVER" == "Yes" ]; then
     echo "Installing Xbox One Wireless Gamepad Drivers"
-    yay -S xone-dkms xone-dongle-firmware
+    yay -S xone-dkms-git xone-dongle-firmware
     echo "Xbox One Gamepad Driver installed !!!"
 fi
 

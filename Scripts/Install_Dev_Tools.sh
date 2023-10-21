@@ -8,7 +8,7 @@ sudo pacman -S krita blender gimp cmake github-cli dotnet-runtime dotnet-sdk asp
 
 
 yay -Syyu
-yay -S rider godot-mono-bin github-desktop visual-studio-code-bin mono-basic android-sdk ncurses5-compat-libs
+yay -S rider godot-mono-bin github-desktop-bin visual-studio-code-bin mono-basic android-sdk ncurses5-compat-libs aseprite-git
 
 
 echo "Installation finished. Please reboot now !!!"
