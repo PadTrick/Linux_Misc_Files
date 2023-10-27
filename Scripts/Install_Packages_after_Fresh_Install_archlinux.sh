@@ -194,7 +194,7 @@ fi
 
 if [ "$GPU_DRIVER" == "AMD" ]; then
     echo "Installing AMD Drivers"
-    sudo pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau lib32-opencl-mesa opencl-mesa
+    sudo pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon amdvlk lib32-amdvlk libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau
 fi
 
 if [ "$GPU_DRIVER" == "INTEL" ]; then
