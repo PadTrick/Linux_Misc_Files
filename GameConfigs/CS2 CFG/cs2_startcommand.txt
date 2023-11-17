@@ -1,1 +1,1 @@
-gamemoderun %command% -freq 165 -console -novid -language english -threads 8 -nojoy
+gamemoderun %command% -freq 165 -console -novid -language english -threads 8 -nojoy -high

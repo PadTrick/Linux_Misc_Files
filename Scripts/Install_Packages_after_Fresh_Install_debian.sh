@@ -115,27 +115,6 @@ fi
 sudo apt update
 sudo apt install btrfs-progs unrar sudo libvulkan1 libvulkan1:i386
 
-#Opera
-    echo "Please run the following command as ROOT ( su - ) and continue:"
-    echo "wget -O - https://deb.opera.com/archive.key | apt-key add -"
-    echo ""
-    PS4='Select: '
-    opt4=("Continue")
-    select opt4 in "${opt4[@]}"
-    do
-        case $opt4 in
-            "Continue")
-                echo "you choose Continue"
-                break
-                ;;
-            *) echo "invalid option $REPLY";;
-        esac
-    done
-
-echo 'deb http://deb.opera.com/opera-stable/ stable non-free' | sudo tee -a /etc/apt/sources.list >/dev/null
-sudo apt update
-sudo apt install opera-stable
-
 #Wine
 sudo mkdir -pm755 /etc/apt/keyrings
 sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
