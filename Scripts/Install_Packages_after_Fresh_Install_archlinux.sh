@@ -4,7 +4,7 @@ echo -e "Choose your packages to install \n"
 #GPU Drivers
 echo -e "Which GPU Drivers ?"
 PS1='Select: '
-opt1=("NVIDIA" "AMD" "INTEL")
+opt1=("NVIDIA" "AMD" "INTEL" "Hyper-V")
 select opt1 in "${opt1[@]}"
 do
     case $opt1 in
@@ -21,6 +21,11 @@ do
         "INTEL")
             echo "you choose INTEL"
             GPU_DRIVER="INTEL"
+            break
+            ;;
+        "Hyper-V")
+            echo "you choose Hyper-V"
+            GPU_DRIVER="Hyper-V"
             break
             ;;
         *) echo "invalid option $REPLY";;
@@ -201,6 +206,12 @@ if [ "$GPU_DRIVER" == "INTEL" ]; then
     echo "Installing INTEL Drivers"
     sudo pacman -S mesa lib32-mesa xf86-video-intel vulkan-intel lib32-vulkan-intel
 fi
+
+if [ "$GPU_DRIVER" == "Hyper-V" ]; then
+    echo "Installing Hyper-V Drivers"
+    sudo pacman -S xf86-video-fbdev
+fi
+
 
 #Some libs & tools which will be usefull for extracting several archive formats, installing packages from AUR or mounting NTFS drivers, screenshots etc
 sudo pacman -S ntfs-3g dkms linux-headers linux-lts-headers linux-zen-headers cabextract  curl  glib2  gnome-desktop  gtk3  mesa-utils  unrar p7zip  psmisc  python-dbus  python-distro  python-evdev  python-gobject  python-lxml  python-pillow python-pip python-lxml git fuse2 gawk polkit-kde-agent jre17-openjdk pavucontrol kwalletmanager partitionmanager
