@@ -204,7 +204,7 @@ fi
 
 if [ "$GPU_DRIVER" == "INTEL" ]; then
     echo "Installing INTEL Drivers"
-    sudo pacman -S mesa lib32-mesa xf86-video-intel vulkan-intel lib32-vulkan-intel
+    sudo pacman -S mesa lib32-mesa vulkan-intel lib32-vulkan-intel intel-media-driver linux-firmware
 fi
 
 if [ "$GPU_DRIVER" == "Hyper-V" ]; then
