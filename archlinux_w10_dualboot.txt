@@ -1,0 +1,29 @@
+Install Windows 10
+Shrink the Windows Partition
+Boot up Archlinux Iso
+Enter >>lsblk<< to list Disks
+>>cfdisk /dev/YOURDEVICE<< (for me >>cfdisk /dev/nvme0n1<<)
+Create at least 1x Partition of ~600M Type EFI Filesystem and 1x Partition for the actual Archlinux installation.
+Format those partitions (those commands are for my own disks, change to your needs)
+>>mkfs.vfat -F32 /dev/nvme0n1p5<<
+>>mkfs.btrfs /dev/nvme0n1p6<<
+after this, start >>archinstall<<
+all you need to make sure, is that you setup the mount points during Disk Setup.
+your efi partition should be >>/boot<<
+your archlinux partition should be >>/<<
+
+After installation, select YES to change the installation, we need to copy some win10 files.
+list your disks with >>lsblk<<
+create a mountpoint
+>>/mnt/win10>>
+>>mount /dev/nvme0n1p1 /mnt/win10<< (change the to your disks)
+go into your mountpoint
+>>cd /mnt/win10<<
+>>cd EFI<<
+>>ls<<
+copy the Microsoft folder into your /boot
+>>cp -r /mnt/win10/EFI/Microsoft /boot/EFI<<
+
+Now you can Exit & Reboot
+>>exit<<
+>>reboot<<
