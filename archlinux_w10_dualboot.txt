@@ -15,7 +15,7 @@ your archlinux partition should be >>/<<
 After installation, select YES to change the installation, we need to copy some win10 files.
 list your disks with >>lsblk<<
 create a mountpoint
->>/mnt/win10>>
+>>mkdir /mnt/win10>>
 >>mount /dev/nvme0n1p1 /mnt/win10<< (change the to your disks)
 go into your mountpoint
 >>cd /mnt/win10<<
