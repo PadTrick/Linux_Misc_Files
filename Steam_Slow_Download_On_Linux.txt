@@ -1,4 +1,4 @@
-Try this...
+Possible fix for slower downloads with Steam on Linux
 
 https://wiki.archlinux.org/title/steam#Disable_HTTP2_for_faster_downloads
 
