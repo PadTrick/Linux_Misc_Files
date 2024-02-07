@@ -113,7 +113,7 @@ fi
 
 #Some usefull packages
 sudo apt update
-sudo apt install btrfs-progs unrar sudo libvulkan1 libvulkan1:i386
+sudo apt install btrfs-progs unrar sudo libvulkan1 libvulkan1:i386 pkexec
 
 #Wine
 sudo mkdir -pm755 /etc/apt/keyrings

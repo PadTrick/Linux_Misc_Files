@@ -14,6 +14,8 @@ vkd3dfl12=1
 
 -d3d12
 
+mangohud -dx12 DXVK_ASYNC=1 WINE_FULLSCREEN_FSR=1 WINEDLLOVERRIDES=dxgi=n,b PULSE_LATENCY_MSEC=60 gamemoderun %command% -adapter 0 -USEALLAVAILABLECORES -cpuLoadRebalancing -ignorepipelinecache gamemoderun %command%
+
 #Nvidia
 Wine/Proton Launch Commands:
 DXVK_ENABLE_NVAPI=1 PROTON_ENABLE_NVAPI=1 PROTON_HIDE_NVIDIA_GPU=0 gamemoderun %command%
