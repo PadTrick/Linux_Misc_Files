@@ -1,5 +1,9 @@
 Fixing Archinstall error on updating keyring:
-sudo pacman -S archlinux-keyring
+
+timedatectl set-ntp true
+
+pacman -Syyy
+pacman -S archlinux-keyring
 
 another solution maybe
 
