@@ -138,9 +138,32 @@ do
     esac
 done
 
+clear
+#Wayland
+echo -e "Install xwayland and xwaylandvideobridge ?"
+PS6='Select: '
+opt6=("Yes" "No")
+select opt7 in "${opt7[@]}"
+do
+    case $opt6 in
+        "Yes")
+            echo "you choose Yes"
+            INSTALL_XWAYLAND="Yes"
+            break
+            ;;
+        "No")
+            echo "you choose No"
+            INSTALL_XWAYLAND="No"
+            break
+            ;;
+        *) echo "invalid option $REPLY";;
+    esac
+done
+
+
 #summary
 clear
-echo "XBox Driver = $XBOX_DRIVER | JP Fonts = $JP_FONT | Firmware = $INSTALL_FIRMWARE | Gamescope Plus = $INSTALL_GAMESCOPE | Visual Studio Code = $INSTALL_VSC | OBS Studio Git = $INSTALL_OBS"
+echo "XBox Driver = $XBOX_DRIVER | JP Fonts = $JP_FONT | Firmware = $INSTALL_FIRMWARE | Gamescope Plus = $INSTALL_GAMESCOPE | Visual Studio Code = $INSTALL_VSC | OBS Studio Git = $INSTALL_OBS | XWayland = $INSTALL_XWAYLAND"
 echo ""
 PS8='Select: '
 opt8=("Continue")
@@ -167,6 +190,11 @@ fi
 if [ "$INSTALL_OBS" == "Yes" ]; then
     echo "Installing OBS Studio Git"
     yay -S obs-studio-git
+fi
+
+if [ "$INSTALL_XWAYLAND" == "Yes" ]; then
+    echo "Installing xwayland and xwaylandvideobridge"
+    yay -S xorg-wayland xwaylandvideobridge
 fi
 
 if [ "$XBOX_DRIVER" == "Yes" ]; then
