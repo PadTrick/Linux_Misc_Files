@@ -14,6 +14,22 @@ pacman-key --populate archlinux
 
 ========================================
 
+Installer Outdated:
+
+pacman-key --init
+pacman-key --populate archlinux
+pacman-key --refresh-keys
+
+## go get coffee/smoke/wait 5 min
+
+pacman -Sy archinstall
+
+archinstall -v  ## should be 2.7.2-1 or later
+
+## now run archinstall as normal
+
+========================================
+
 WiFi Offline:
 
 rfkill unblock wlan
@@ -22,6 +38,7 @@ ip link set wlan0 up
 ========================================
 
 Archinstall WiFi Setup:
+
 YOURDEVICE = your wifi device(example 'wlan0' for me)
 SSID = your wifi hotspot name at home/work
 PASSPHRASE = your wifi password
