@@ -1,3 +1,3 @@
 #!/bin/bash
-yay -S kded-rotation-git corekeyboard
+yay -S iio-sensor-proxy corekeyboard
 echo "All installations finished !!!"

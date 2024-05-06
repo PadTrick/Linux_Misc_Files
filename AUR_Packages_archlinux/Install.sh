@@ -141,8 +141,8 @@ done
 clear
 #Wayland
 echo -e "Install xwayland and xwaylandvideobridge ?"
-PS6='Select: '
-opt6=("Yes" "No")
+PS7='Select: '
+opt7=("Yes" "No")
 select opt7 in "${opt7[@]}"
 do
     case $opt6 in
