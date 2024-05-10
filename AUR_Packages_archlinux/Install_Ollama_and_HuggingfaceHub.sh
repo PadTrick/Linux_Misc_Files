@@ -1,2 +1,2 @@
 #!/bin/bash
-yay -S ollama-rocm clblast opencl-clover-mesa rocm-opencl-runtime rocm-hip-sdk rocm-opencl-sdk python-huggingface-hub
+yay -S ollama-cuda python-huggingface-hub cuda opencl-nvidia ncurses5-compat-libs

@@ -229,6 +229,6 @@ if [ "$INSTALL_GAMESCOPE" == "Yes" ]; then
 fi
 
 yay -Syyu
-yay -S downgrade protontricks-git protonup-qt yay
+yay -S downgrade protontricks-git protonup-qt
 
 echo "Installation finished. Please reboot now !!!"
