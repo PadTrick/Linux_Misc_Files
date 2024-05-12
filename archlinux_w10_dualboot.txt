@@ -9,8 +9,13 @@ Create at least 1x Partition of ~600M Type EFI Filesystem and 1x Partition for t
 Format those partitions (those commands are for my own disks, change to your needs)
 >>mkfs.vfat -F32 /dev/nvme0n1p5<<
 >>mkfs.btrfs /dev/nvme0n1p6<<
+With the new archinstall script we need to mount the partitions manually.
+mount /dev/nvme0n1p6 /mnt
+mkdir /mnt/boot
+mount /dev/nvme0n1p5 /mnt/boot
 after this, start >>archinstall<<
 all you need to make sure, is that you setup the mount points during Disk Setup.
+choose premounted configuration and type >>/mnt<< for root.
 your efi partition should be >>/boot<<
 your archlinux partition should be >>/<<
 
@@ -29,6 +34,8 @@ copy the Microsoft folder into your /boot
 Now you can Exit & Reboot
 >>exit<<
 >>reboot<<
+
+Dualboot on 2 Disks hasnt been updated for the new archinstall script yet
 
 Dualboot - EFI - W10 & Archlinux on 2 Disks
 search your keymap and setup your keymap, for me it will be de_DE-latin1

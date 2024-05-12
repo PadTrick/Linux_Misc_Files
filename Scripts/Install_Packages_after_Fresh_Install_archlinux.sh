@@ -265,7 +265,7 @@ fi
 
 if [ "$WACOM_DRIVER" == "Yes" ]; then
     echo "Installing Wacom Drawing Tablet drivers"
-    sudo pacman -S xf86-input-wacom libwacom usbutils kcm-wacomtablet
+    sudo pacman -S xf86-input-wacom libwacom usbutils wacomtablet
 fi
 
 if [ "$FILEZILLA_PACKAGE" == "Yes" ]; then

@@ -145,7 +145,7 @@ PS7='Select: '
 opt7=("Yes" "No")
 select opt7 in "${opt7[@]}"
 do
-    case $opt6 in
+    case $opt7 in
         "Yes")
             echo "you choose Yes"
             INSTALL_XWAYLAND="Yes"
@@ -180,6 +180,7 @@ done
 
 echo "Installing ..."
 
+sudo pacman -Syu
 yay -Syyu
 
 if [ "$INSTALL_VSC" == "Yes" ]; then
@@ -194,7 +195,7 @@ fi
 
 if [ "$INSTALL_XWAYLAND" == "Yes" ]; then
     echo "Installing xwayland and xwaylandvideobridge"
-    yay -S xorg-wayland xwaylandvideobridge
+    yay -S xorg-xwayland xwaylandvideobridge
 fi
 
 if [ "$XBOX_DRIVER" == "Yes" ]; then

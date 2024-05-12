@@ -26,7 +26,7 @@ type pulseaudio -k to reload configuration
 pacmd load-module module-loopback latency_msec=5
 
 config your settings until it works. create a script file with that command, reboot pc, run script and check if it works.
-if all works well add the folling to your /etc/pulse/default.pa
+if all works well add the folling to your
 
 load-module module-loopback latency_msec=5
 
