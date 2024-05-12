@@ -185,22 +185,22 @@ yay -Syyu
 
 if [ "$INSTALL_VSC" == "Yes" ]; then
     echo "Installing Visual Studio Code"
-    yay -S visual-studio-code-bin
+    yay -S visual-studio-code-bin --noconfirm
 fi
 
 if [ "$INSTALL_OBS" == "Yes" ]; then
     echo "Installing OBS Studio Git"
-    yay -S obs-studio-git
+    yay -S obs-studio-git --noconfirm
 fi
 
 if [ "$INSTALL_XWAYLAND" == "Yes" ]; then
     echo "Installing xwayland and xwaylandvideobridge"
-    yay -S xorg-xwayland xwaylandvideobridge
+    yay -S xorg-xwayland xwaylandvideobridge --noconfirm
 fi
 
 if [ "$XBOX_DRIVER" == "Yes" ]; then
     echo "Installing Xbox One Wireless Gamepad Drivers"
-    yay -S xone-dkms-git xone-dongle-firmware
+    yay -S xone-dkms-git xone-dongle-firmware --noconfirm
     echo "Xbox One Gamepad Driver installed !!!"
 fi
 
@@ -212,24 +212,24 @@ if [ "$JP_FONT" == "Yes" ]; then
     echo "copying ttf-kochi-substitute to $HOME/git"
     cp -a $WORKING_DIR/ttf-kochi-substitute $HOME/git
     echo "Installing ttf-kochi-substitute"
-    cd ttf-kochi-substitute && makepkg -si
+    cd ttf-kochi-substitute && makepkg -si --noconfirm
     cd $HOME/git
     echo "ttf-kochi-substitute - JP Font installed !!!"
 fi
 
 if [ "$INSTALL_FIRMWARE" == "Yes" ]; then
     echo "Installing ast, aic94xx & wd719x Firmware "
-	yay -S ast-fw aic94xx-firmware wd719x-firmware
+	yay -S ast-fw aic94xx-firmware wd719x-firmware --noconfirm
     echo "All Firmwares are installed !!!"
 fi
 
 if [ "$INSTALL_GAMESCOPE" == "Yes" ]; then
     echo "Installing Gamescope-Plus"
-	yay -S gamescope-plus lib32-gamescope-plus
+	yay -S gamescope-plus lib32-gamescope-plus --noconfirm
     echo "Gamescope installed !!!"
 fi
 
 yay -Syyu
-yay -S downgrade protontricks-git protonup-qt
+yay -S downgrade protontricks-git protonup-qt --noconfirm
 
 echo "Installation finished. Please reboot now !!!"

@@ -1,5 +1,10 @@
 #!/bin/bash
 clear
+echo -e "Setting keymap \n"
+sudo localectl --no-convert set-keymap de-latin1-nodeadkeys
+sudo localectl --no-convert set-x11-keymap de pc105 deadgraveacute
+
+clear
 echo -e "Choose your packages to install \n"
 #GPU Drivers
 echo -e "Which GPU Drivers ?"
@@ -184,98 +189,100 @@ echo "Installing ..."
 
 #Install tools to check fastest Mirrors
 #Check Mirrors of France & Germany, select fastest 5 of these and write them into the mirrorlist
-sudo pacman -S reflector pacman-contrib
+sudo pacman -S reflector pacman-contrib --noconfirm
 sudo reflector --save /etc/pacman.d/mirrorlist --country France,Germany --protocol https --latest 5
 
 sudo pacman -Syu
 
 #Discover missing dependencies
-sudo pacman -S packagekit-qt5 flatpak fwupd
+sudo pacman -S packagekit-qt5 flatpak fwupd --noconfirm
 
 if [ "$GPU_DRIVER" == "NVIDIA" ]; then
     echo "Installing NVIDIA Drivers"
-    sudo pacman -S vulkan-icd-loader lib32-vulkan-icd-loader nvidia-utils lib32-nvidia-utils nvidia-settings lib32-opencl-nvidia opencl-nvidia
+    sudo pacman -S vulkan-icd-loader lib32-vulkan-icd-loader nvidia-utils lib32-nvidia-utils nvidia-settings lib32-opencl-nvidia opencl-nvidia --noconfirm
 fi
 
 if [ "$GPU_DRIVER" == "AMD" ]; then
     echo "Installing AMD Drivers"
-    sudo pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon amdvlk lib32-amdvlk libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau
+    sudo pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon amdvlk lib32-amdvlk libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau --noconfirm
 fi
 
 if [ "$GPU_DRIVER" == "INTEL" ]; then
     echo "Installing INTEL Drivers"
-    sudo pacman -S mesa lib32-mesa vulkan-intel lib32-vulkan-intel intel-media-driver linux-firmware
+    sudo pacman -S mesa lib32-mesa vulkan-intel lib32-vulkan-intel intel-media-driver linux-firmware --noconfirm
 fi
 
 if [ "$GPU_DRIVER" == "Hyper-V" ]; then
     echo "Installing Hyper-V Drivers"
-    sudo pacman -S xf86-video-fbdev
+    sudo pacman -S xf86-video-fbdev --noconfirm
 fi
 
 
 #Some libs & tools which will be usefull for extracting several archive formats, installing packages from AUR or mounting NTFS drivers, screenshots etc
-sudo pacman -S gnome-keyring ntfs-3g dkms linux-headers linux-lts-headers linux-zen-headers cabextract  curl  glib2  gnome-desktop  gtk3  mesa-utils  unrar p7zip  psmisc  python-dbus  python-distro  python-evdev  python-gobject  python-lxml  python-pillow python-pip python-lxml git fuse2 gawk polkit-kde-agent jre17-openjdk pavucontrol kwalletmanager partitionmanager neofetch
+sudo pacman -S gnome-keyring ntfs-3g dkms linux-headers linux-lts-headers linux-zen-headers cabextract  curl  glib2  gnome-desktop  gtk3  mesa-utils  unrar p7zip  psmisc  python-dbus  python-distro  python-evdev  python-gobject  python-lxml  python-pillow python-pip python-lxml git fuse2 gawk polkit-kde-agent jre17-openjdk pavucontrol kwalletmanager partitionmanager neofetch --noconfirm
 
 #Screenshot utility for KDE
-sudo pacman -S spectacle
+sudo pacman -S spectacle --noconfirm
 
 #utility to manage cpu frequency etc.
-sudo pacman -S cpupower
+sudo pacman -S cpupower --noconfirm
 
 #media player
-sudo pacman -S vlc
+sudo pacman -S vlc --noconfirm
 
 #browsers
-sudo pacman -S firefox
+sudo pacman -S firefox --noconfirm
+
+sudo pacman -S mangohud lib32-mangohud overlay --noconfirm
 
 #Wine and dependencies
-sudo pacman -S wine-staging winetricks
-sudo pacman -S giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox
+sudo pacman -S wine-staging winetricks --noconfirm
+sudo pacman -S giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox --noconfirm
 
 #steam, lutris and gamemode
-sudo pacman -S steam gamemode lib32-gamemode lutris
+sudo pacman -S steam gamemode lib32-gamemode lutris --noconfirm
 
 #Packages for Diablo 1 DevilutionX Port
-sudo pacman -S fmt lib32-sdl2 lib32-sdl2_image lib32-sdl2_mixer lib32-sdl2_ttf sdl2 sdl2_image sdl2_mixer sdl2_ttf
+sudo pacman -S fmt lib32-sdl2 lib32-sdl2_image lib32-sdl2_mixer lib32-sdl2_ttf sdl2 sdl2_image sdl2_mixer sdl2_ttf --noconfirm
 
 if [ "$MOUSE_DRIVER" == "Solaar" ]; then
     echo "Installing Solaar Drivers"
-    sudo pacman -S solaar
+    sudo pacman -S solaar --noconfirm
 fi
 
 if [ "$MOUSE_DRIVER" == "Piper" ]; then
     echo "Installing Piper Drivers"
-    sudo pacman -S piper
+    sudo pacman -S piper --noconfirm
 fi
 
 if [ "$AUDIO_DRIVER" == "Pulseaudio" ]; then
     echo "Installing Pulseaudio Drivers"
-    sudo pacman -S paprefs
+    sudo pacman -S paprefs --noconfirm
 fi
 
 if [ "$AUDIO_DRIVER" == "Pipewire" ]; then
     echo "Installing Pipewire Drivers"
-    sudo pacman -S qpwgraph wireplumber
+    sudo pacman -S qpwgraph wireplumber --noconfirm
 fi
 
 if [ "$PULSE_NETWORK" == "Yes" ]; then
     echo "Installing Pulseaudio Network Streaming packages"
-    sudo pacman -S pulseaudio-rtp pulseaudio-zeroconf
+    sudo pacman -S pulseaudio-rtp pulseaudio-zeroconf --noconfirm
 fi
 
 if [ "$WACOM_DRIVER" == "Yes" ]; then
     echo "Installing Wacom Drawing Tablet drivers"
-    sudo pacman -S xf86-input-wacom libwacom usbutils wacomtablet
+    sudo pacman -S xf86-input-wacom libwacom usbutils wacomtablet --noconfirm
 fi
 
 if [ "$FILEZILLA_PACKAGE" == "Yes" ]; then
     echo "Installing Filezilla FTP Client"
-    sudo pacman -S filezilla
+    sudo pacman -S filezilla --noconfirm
 fi
 
 if [ "$BARRIER_PACKAGE" == "Yes" ]; then
     echo "Installing Barrier"
-    sudo pacman -S barrier
+    sudo pacman -S barrier --noconfirm
 fi
 
 echo "Installation finished. Please reboot now !!!"

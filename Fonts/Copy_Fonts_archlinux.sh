@@ -7,5 +7,5 @@ sudo cp -r $WORKING_DIR/otf /usr/local/share/fonts
 sudo cp -r $WORKING_DIR/ttf /usr/local/share/fonts
 
 
-sudo pacman -S noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-dejavu ttf-liberation ttf-opensans
+sudo pacman -S noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-dejavu ttf-liberation ttf-opensans --noconfirm
 echo "Fonts have been installed !!!"
