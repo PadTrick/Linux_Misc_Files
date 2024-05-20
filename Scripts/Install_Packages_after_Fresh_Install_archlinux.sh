@@ -233,7 +233,7 @@ sudo pacman -S vlc --noconfirm
 #browsers
 sudo pacman -S firefox --noconfirm
 
-sudo pacman -S mangohud lib32-mangohud overlay --noconfirm
+sudo pacman -S mangohud lib32-mangohud goverlay --noconfirm
 
 #Wine and dependencies
 sudo pacman -S wine-staging winetricks --noconfirm
