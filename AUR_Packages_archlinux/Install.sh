@@ -76,7 +76,7 @@ do
 done
 clear
 #Gamescope
-echo -e "Install Gamescope-Plus ?"
+echo -e "Install Gamescope-GIT ?"
 PS5='Select: '
 opt5=("Yes" "No")
 select opt5 in "${opt5[@]}"
@@ -225,7 +225,7 @@ fi
 
 if [ "$INSTALL_GAMESCOPE" == "Yes" ]; then
     echo "Installing Gamescope-Plus"
-	yay -S gamescope-plus lib32-gamescope-plus --noconfirm
+	yay -S gamescope-git --noconfirm
     echo "Gamescope installed !!!"
 fi
 

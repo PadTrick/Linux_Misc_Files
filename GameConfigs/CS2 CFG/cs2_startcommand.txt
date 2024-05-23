@@ -2,4 +2,12 @@ gamemoderun %command% -freq 165 -console -novid -language english -threads 8 -no
 
 gamemoderun mangohud %command% -vulkan -fullscreen -w 1280 -h 960 -refresh 165 -console -novid -language english -threads 8 -nojoy -high
 
+gamemoderun mangohud gamescope -w 1280 -h 960 -r 165 -S stretch -f -- %command% -vulkan -fullscreen -refresh 165 -console -novid -language english -threads 8 -nojoy -high
+
 -vulkan -fullscreen -w 1280 -h 960 -refresh 165 -console -novid -language english -threads 8 -nojoy -high
+
+-S stretch
+
+gamescope -w 1920 -h 1080 -W 3440 -H 1440 -b -- %command%
+
+gamescope -w 1280 -h 960 -r 165 -S stretch -f -- %command%
