@@ -230,6 +230,6 @@ if [ "$INSTALL_GAMESCOPE" == "Yes" ]; then
 fi
 
 yay -Syyu
-yay -S downgrade protontricks-git protonup-qt heroic-games-launcher-bin --noconfirm
+yay -S downgrade protontricks-git protonup-qt heroic-games-launcher-bin vkbasalt lib32-vkbasalt vesktop --noconfirm
 
 echo "Installation finished. Please reboot now !!!"
