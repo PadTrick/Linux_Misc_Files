@@ -1,3 +1,2 @@
-Red Dead Redemption 2
-Remnant 2
-
+Remnant 2 (dx12 error popup windows)
+Elite Dangerous (crashes on planet generation)
