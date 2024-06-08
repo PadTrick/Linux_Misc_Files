@@ -160,16 +160,36 @@ do
     esac
 done
 
-
-#summary
 clear
-echo "XBox Driver = $XBOX_DRIVER | JP Fonts = $JP_FONT | Firmware = $INSTALL_FIRMWARE | Gamescope Plus = $INSTALL_GAMESCOPE | Visual Studio Code = $INSTALL_VSC | OBS Studio Git = $INSTALL_OBS | XWayland = $INSTALL_XWAYLAND"
-echo ""
+#piper-git
+echo -e "Install piper-git? ?"
 PS8='Select: '
-opt8=("Continue")
+opt8=("Yes" "No")
 select opt8 in "${opt8[@]}"
 do
     case $opt8 in
+        "Yes")
+            echo "you choose Yes"
+            INSTALL_PIPER_GIT="Yes"
+            break
+            ;;
+        "No")
+            echo "you choose No"
+            INSTALL_PIPER_GIT="No"
+            break
+            ;;
+        *) echo "invalid option $REPLY";;
+    esac
+done
+#summary
+clear
+echo "XBox Driver = $XBOX_DRIVER | JP Fonts = $JP_FONT | Firmware = $INSTALL_FIRMWARE | Gamescope Plus = $INSTALL_GAMESCOPE | Visual Studio Code = $INSTALL_VSC | OBS Studio Git = $INSTALL_OBS | XWayland = $INSTALL_XWAYLAND | Piper-GIT = $INSTALL_PIPER_GIT"
+echo ""
+PS9='Select: '
+opt9=("Continue")
+select opt9 in "${opt9[@]}"
+do
+    case $opt9 in
         "Continue")
             echo "you choose Continue"
             break
@@ -227,6 +247,13 @@ if [ "$INSTALL_GAMESCOPE" == "Yes" ]; then
     echo "Installing Gamescope-Plus"
 	yay -S gamescope-git --noconfirm
     echo "Gamescope installed !!!"
+fi
+
+
+if [ "$INSTALL_PIPER_GIT" == "Yes" ]; then
+    echo "Installing Piper GIT"
+	yay -S piper-git --noconfirm
+    echo "piper git installed !!!"
 fi
 
 yay -Syyu
