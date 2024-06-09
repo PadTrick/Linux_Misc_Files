@@ -5,7 +5,11 @@
 gamemoderun mangohud %command%
 
 
-
+#Sea of Thieves
+#if Microsoft Account Login Windows is black
+PROTON_USE_WINED3D=1 gamemoderun mangohud %command%
+#after you are logged in remove PROTON_USE_WINED3D=1
+gamemoderun mangohud %command%
 
 mangohud gamemoderun %command% VKD3D_CONFIG=dxr11,dxr
 
