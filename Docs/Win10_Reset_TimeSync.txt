@@ -2,7 +2,7 @@ If you Dual Boot Windows and Linux (like me), you maybe notice that the Time doe
 if you change from one OS the the other. Under Archlinux its just one click to activate the
 timesync and it works correctly. However, Windows is "special" in that regard, it doesnt Sync at
 all, even if its activated. I always have to untick and retick the option for TimeSync to correctly
-set the Time. This will info below will automate this process. After a few seconds in windows,
+set the Time. This info below will automate this process. After a few seconds in windows,
 it will set the time correctly.
 Set the User/Group to SYSTEM.
 create a batch file and put it into where every you like(for i its C:\reset_timesync.bat)
