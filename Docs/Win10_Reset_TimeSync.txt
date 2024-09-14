@@ -4,8 +4,8 @@ timesync and it works correctly. However, Windows is "special" in that regard, i
 all, even if its activated. I always have to untick and retick the option for TimeSync to correctly
 set the Time. This info below will automate this process. After a few seconds in windows,
 it will set the time correctly.
-Set the User/Group to SYSTEM.
-create a batch file and put it into where every you like(for i its C:\reset_timesync.bat)
+
+create a batch file and put it into where every you like(for me its C:\reset_timesync.bat)
 write these 4 lines in it:
 
 w32tm /debug /disable
@@ -14,6 +14,7 @@ w32tm /register
 net start w32time
 
 save and close it.
+
 after that, open scheduler (aufgabenplanung in german) and add a new event (not a basic event).
 At the tab General, give whatever you want as name and select the box "Run with highest privileges"
 and at the bottom at Configure for: select "Windows 10".
@@ -24,4 +25,4 @@ At the tab Actions, create a new action, at Action: select "Start a program" and
 batch file you created earlier.
 After that, just hit "OK" to save everything.
 
-now the timesync should reset at every reboot.
+now the timesync should reset at every reboot after few seconds.
