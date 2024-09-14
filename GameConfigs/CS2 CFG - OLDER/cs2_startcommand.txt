@@ -1,0 +1,1 @@
+gamemoderun mangohud gamescope -w 1280 -h 960 -r 165 -S stretch -f -- %command% -vulkan -fullscreen -w 1280 -h 960 -refresh 165 -console -novid -language english -threads 8 -nojoy -high

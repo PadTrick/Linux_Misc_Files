@@ -1,0 +1,15 @@
+#copy pipewire-loopback.service to /etc/systemd/user
+
+sudo cp pipewire-loopback.service /etc/systemd/user
+
+#refresh daemons
+
+systemctl --user daemon-reload
+
+#start loopback
+
+systemctl --user start pipewire-loopback.service
+
+#enable loopback at start
+
+systemctl --user enable pipewire-loopback.service

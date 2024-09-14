@@ -1,0 +1,17 @@
+Possible fix for slower downloads with Steam on Linux
+
+https://wiki.archlinux.org/title/steam#Disable_HTTP2_for_faster_downloads
+
+Native Installs:
+Edit/Create this file: ~/.steam/steam/steam_dev.cfg
+
+Put in the following two lines and restart Steam:
+@nClientDownloadEnableHTTP2PlatformLinux 0
+@fDownloadRateImprovementToAddAnotherConnection 1.0
+
+If you are using Flatpak use this file path:
+~/.var/app/com.valvesoftware.Steam/.steam/steam/steam_dev.cfg
+
+Put in the following two lines and restart Steam:
+@nClientDownloadEnableHTTP2PlatformLinux 0
+@fDownloadRateImprovementToAddAnotherConnection 1.0

@@ -1,1 +1,0 @@
-# mount -o loop /pfad_zum_image/image.iso /mnt/disk

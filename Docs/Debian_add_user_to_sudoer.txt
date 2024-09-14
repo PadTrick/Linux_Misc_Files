@@ -1,0 +1,2 @@
+login as root and enter
+sudo usermod -aG sudo username
