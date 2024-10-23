@@ -1,3 +1,4 @@
 Remnant 2 (dx12 error popup window)
 Elite Dangerous (crashes on planet generation)
 The First Descendant (dx12 error popup window)
+Ghost Recon: Breakpoint (crash on shader compile, vk_wine error)

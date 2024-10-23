@@ -189,8 +189,9 @@ echo "Installing ..."
 
 #Install tools to check fastest Mirrors
 #Check Mirrors of France & Germany, select fastest 5 of these and write them into the mirrorlist
-sudo pacman -S reflector pacman-contrib --noconfirm
-sudo reflector --save /etc/pacman.d/mirrorlist --country France,Germany --protocol https --latest 5
+#currently disabled
+#sudo pacman -S reflector pacman-contrib --noconfirm
+#sudo reflector --save /etc/pacman.d/mirrorlist --country France,Germany --protocol https --latest 5
 
 sudo pacman -Syu
 
@@ -209,7 +210,7 @@ fi
 
 if [ "$GPU_DRIVER" == "INTEL" ]; then
     echo "Installing INTEL Drivers"
-    sudo pacman -S mesa lib32-mesa vulkan-intel lib32-vulkan-intel intel-media-driver linux-firmware --noconfirm
+    sudo pacman -S mesa lib32-mesa vulkan-intel lib32-vulkan-intel intel-media-driver linux-firmware intel-graphics-compiler intel-compute-runtime vulkan-headers vulkan-validation-layers vulkan-tools libva-intel-driver libvdpau-va-gl libva-utils intel-ucode directx-headers mesa-vdpau lib32-mesa-vdpau libva-mesa-driver lib32-libva-mesa-driver vulkan-mesa-layers lib32-vulkan-mesa-layers lib32-opencl-clover-mesa opencl-clover-mesa --noconfirm
 fi
 
 if [ "$GPU_DRIVER" == "Hyper-V" ]; then
@@ -233,6 +234,7 @@ sudo pacman -S vlc --noconfirm
 #browsers
 sudo pacman -S firefox --noconfirm
 
+#gaming overlay
 sudo pacman -S mangohud lib32-mangohud goverlay --noconfirm
 
 #Wine and dependencies
@@ -240,7 +242,7 @@ sudo pacman -S wine-staging winetricks --noconfirm
 sudo pacman -S giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox --noconfirm
 
 #steam, lutris and gamemode
-sudo pacman -S steam gamemode lib32-gamemode lutris
+sudo pacman -S steam gamemode lib32-gamemode lutris --noconfirm
 
 #Packages for Diablo 1 DevilutionX Port
 sudo pacman -S fmt lib32-sdl2 lib32-sdl2_image lib32-sdl2_mixer lib32-sdl2_ttf sdl2 sdl2_image sdl2_mixer sdl2_ttf --noconfirm

@@ -1,0 +1,7 @@
+# Change mirror to archive - edit '/etc/pacman.d/mirrorlist' uncomment/remove all server and add the following line
+Server=https://archive.archlinux.org/repos/2024/07/01/$repo/os/$arch
+
+#Force install updates
+sudo pacman -Syyuu
+
+# Reboot
