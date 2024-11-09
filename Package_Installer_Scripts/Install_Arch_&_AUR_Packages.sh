@@ -190,7 +190,7 @@ echo "Installing ..."
 #Install tools to check fastest Mirrors
 #Check Mirrors of France & Germany, select fastest 5 of these and write them into the mirrorlist
 #currently disabled
-#sudo pacman -S reflector pacman-contrib --noconfirm
+sudo pacman -S reflector pacman-contrib --noconfirm
 #sudo reflector --save /etc/pacman.d/mirrorlist --country France,Germany --protocol https --latest 5
 
 sudo pacman -Syu
@@ -547,7 +547,7 @@ if [ "$INSTALL_PIPER_GIT" == "Yes" ]; then
 fi
 
 yay -Syyu
-yay -S downgrade protontricks-git protonup-qt heroic-games-launcher-bin vkbasalt lib32-vkbasalt --noconfirm
+yay -S downgrade protontricks-git protonup-qt heroic-games-launcher-bin vkbasalt lib32-vkbasalt openrgb-bin --noconfirm
 
 echo "Installation finished. Please reboot now !!!"
 

@@ -1,0 +1,24 @@
+Here are the lines you need to adjust in your makepkg.conf to prevent the creation of debug packages:
+
+/etc/makepkg.conf
+1. DEBUG_CFLAGS and DEBUG_CXXFLAGS
+
+These flags set debugging options, which you can disable. Comment out these two lines to remove the debugging flags:
+
+#DEBUG_CFLAGS="-g"
+#DEBUG_CXXFLAGS="$DEBUG_CFLAGS"
+
+2. OPTIONS
+
+In the OPTIONS line, there is the debug option, which activates debugging by default. You should disable debug by placing a ! in front of it:
+
+OPTIONS=(strip docs !libtool !staticlibs emptydirs zipman purge !debug lto)
+
+The !debug ensures that no debug information is added.
+Summary of changes:
+
+#DEBUG_CFLAGS="-g"
+#DEBUG_CXXFLAGS="$DEBUG_CFLAGS"
+OPTIONS=(strip docs !libtool !staticlibs emptydirs zipman purge !debug lto)
+
+With these changes, no debug packages should be created.
