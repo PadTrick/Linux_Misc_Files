@@ -83,29 +83,30 @@ done
 
 echo "Installing ..."
 
+echo "Add "contrib", "non-free" and "non-free-firmware" components to /etc/apt/sources.list, for example:"
+echo "# Debian Bookworm"
+echo "deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware"
+echo ""
+echo "Continue after you modified your sources.list "
+echo ""
+PS4='Select: '
+opt4=("Continue")
+select opt4 in "${opt4[@]}"
+do
+    case $opt4 in
+        "Continue")
+            echo "you choose Continue"
+            break
+            ;;
+        *) echo "invalid option $REPLY";;
+    esac
+done
+
 #32bit support
 sudo apt update
 sudo dpkg --add-architecture i386
 
 if [ "$NVIDIA_DRIVER" == "Yes" ]; then
-    echo "Add "contrib", "non-free" and "non-free-firmware" components to /etc/apt/sources.list, for example:"
-    echo "# Debian Bookworm"
-    echo "deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware"
-    echo ""
-    echo "Continue after you modified your sources.list "
-    echo ""
-    PS4='Select: '
-    opt4=("Continue")
-    select opt4 in "${opt4[@]}"
-    do
-        case $opt4 in
-            "Continue")
-                echo "you choose Continue"
-                break
-                ;;
-            *) echo "invalid option $REPLY";;
-        esac
-    done
     echo "Installing NVIDIA Drivers"
     sudo apt update
     sudo apt install nvidia-driver firmware-misc-nonfree
