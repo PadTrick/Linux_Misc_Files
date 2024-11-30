@@ -3,6 +3,7 @@
 #Intel ARC
 #Default works for most Games
 gamemoderun mangohud %command%
+gamemoderun MANGOHUD_CONFIG=fps_limit=60 MANGOHUD_CONFIG=no_display mangohud %command%
 
 #Testing
 gamemoderun mangohud DXVK_FILTER_DEVICE_NAME="Intel(R) Arc(tm) A770 Graphics (DG2)" %command%
