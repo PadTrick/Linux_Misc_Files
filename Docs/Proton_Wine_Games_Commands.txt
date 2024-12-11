@@ -12,7 +12,6 @@ gamemoderun mangohud DXVK_FILTER_DEVICE_NAME="Intel(R) Arc(tm) A770 Graphics (DG
 #Palworld
 gamemoderun mangohud %command% -dx12
 
-
 #Sea of Thieves
 #if Microsoft Account Login Windows is black
 PROTON_USE_WINED3D=1 gamemoderun mangohud %command%
