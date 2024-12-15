@@ -232,7 +232,7 @@ sudo pacman -S cpupower --noconfirm
 sudo pacman -S vlc --noconfirm
 
 #browsers
-sudo pacman -S firefox --noconfirm
+sudo pacman -S vivaldi --noconfirm
 
 #gaming overlay
 sudo pacman -S mangohud lib32-mangohud goverlay --noconfirm
