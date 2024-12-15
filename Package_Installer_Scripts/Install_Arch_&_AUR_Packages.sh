@@ -231,9 +231,6 @@ sudo pacman -S cpupower --noconfirm
 #media player
 sudo pacman -S vlc --noconfirm
 
-#browsers
-sudo pacman -S firefox --noconfirm
-
 #gaming overlay
 sudo pacman -S mangohud lib32-mangohud goverlay --noconfirm
 
@@ -547,7 +544,7 @@ if [ "$INSTALL_PIPER_GIT" == "Yes" ]; then
 fi
 
 yay -Syyu
-yay -S downgrade protontricks-git protonup-qt heroic-games-launcher-bin vkbasalt lib32-vkbasalt openrgb-bin --noconfirm
+yay -S downgrade protontricks-git protonup-qt heroic-games-launcher-bin vkbasalt lib32-vkbasalt openrgb-bin brave-bin --noconfirm
 
 echo "Installation finished. Please reboot now !!!"
 
