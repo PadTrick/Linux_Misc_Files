@@ -191,7 +191,7 @@ echo "Installing ..."
 #Check Mirrors of France & Germany, select fastest 5 of these and write them into the mirrorlist
 #currently disabled
 sudo pacman -S reflector pacman-contrib --noconfirm
-#sudo reflector --save /etc/pacman.d/mirrorlist --country France,Germany --protocol https --latest 5
+#sudo reflector --save /etc/pacman.d/mirrorlist --country Germany --protocol https --latest 10
 
 sudo pacman -Syu
 
@@ -218,6 +218,8 @@ if [ "$GPU_DRIVER" == "Hyper-V" ]; then
     sudo pacman -S xf86-video-fbdev --noconfirm
 fi
 
+#Some missing firmware packages
+sudo pacman -S linux-firmware-qlogic
 
 #Some libs & tools which will be usefull for extracting several archive formats, installing packages from AUR or mounting NTFS drivers, screenshots etc
 sudo pacman -S gnome-keyring ntfs-3g dkms linux-lts-headers linux-zen-headers cabextract  curl  glib2  gnome-desktop  gtk3  mesa-utils  unrar p7zip  psmisc  python-dbus  python-distro  python-evdev  python-gobject  python-lxml  python-pillow python-pip python-lxml git fuse2 gawk polkit-kde-agent jre17-openjdk pavucontrol kwalletmanager partitionmanager fastfetch gwenview kcalc qt5-imageformats qt6-imageformats --noconfirm
@@ -345,7 +347,7 @@ do
 done
 clear
 #FIRMWARE
-echo -e "Install ast, aic94xx & wd719x firmware ?"
+echo -e "Install ast, aic94xx, wd719x & upd72020x firmware ?"
 PS4='Select: '
 opt4=("Yes" "No")
 select opt4 in "${opt4[@]}"
@@ -528,8 +530,8 @@ if [ "$JP_FONT" == "Yes" ]; then
 fi
 
 if [ "$INSTALL_FIRMWARE" == "Yes" ]; then
-    echo "Installing ast, aic94xx & wd719x Firmware "
-	yay -S ast-fw aic94xx-firmware wd719x-firmware --noconfirm
+    echo "Installing ast, aic94xx, wd719x & upd72020x-fw Firmware "
+	yay -S ast-fw aic94xx-firmware wd719x-firmware upd72020x-fw --noconfirm
     echo "All Firmwares are installed !!!"
 fi
 
@@ -547,7 +549,7 @@ if [ "$INSTALL_PIPER_GIT" == "Yes" ]; then
 fi
 
 yay -Syyu
-yay -S downgrade protontricks-git protonup-qt heroic-games-launcher-bin vkbasalt lib32-vkbasalt openrgb-bin --noconfirm
+yay -S downgrade protontricks-git protonup-qt heroic-games-launcher-bin vkbasalt lib32-vkbasalt openrgb-bin vesktop --noconfirm
 
 echo "Installation finished. Please reboot now !!!"
 
