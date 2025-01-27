@@ -1,1 +1,1 @@
-LD_PRELOAD="" gamemoderun mangohud gamescope -w 1280 -h 960 -r 240 -S stretch -f --force-grab-cursor -- %command% -vulkan -fullscreen -w 1280 -h 960 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
+LD_PRELOAD="" gamemoderun mangohud gamescope -w 1280 -h 960 -r 240 -S stretch -f --force-grab-cursor -- %command% -vulkan -fullscreen -w 1280 -h 960 -refresh 240 -console -novid -language english -threads 8 -nojoy -high -audiodriver alsa -sdlaudiodriver
