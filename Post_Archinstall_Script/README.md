@@ -1,8 +1,7 @@
 # All in One Install Script ***WIP*** **NOT TESTED YET**
 This Script combines all my Install Scripts for a Clean Archlinux Installation
 
-- You are able to select, which GPU, Audio, Mouse Driver should be installed.
-- You are able to select, if you want to install: Wacom Drivers(Drawing Tables), Filezilla, Barrier, XBOX Gamepad Driver, Gamescope GIT, DevTools, Emulators, LibreOffice, VirtualBox,XWayland.
+- You can choose which Packages it will install. Like VSCode, Dot.Net, GPU Drivers etc.
 - It will install more Packages like fonts, python etc., to give a good system for daily use and gaming.
 
 - It will also configure Pacman Settings (ParallelDownloads=5,ILoveCandy & Colors and if not already done, enable multilib, you can change it manually in **/etc/pacman.conf**)
