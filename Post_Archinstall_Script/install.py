@@ -66,18 +66,14 @@ GPU_ENV_CONFIG = {
         "__GL_THREADED_OPTIMIZATION=1"
     ],
     "AMD": [
-        "MESA_GLSL_CACHE=1",
-        "MESA_GLSL_CACHE_DISABLE_CLEANUP=1",
-        "MESA_GLSL_CACHE_MAX_SIZE=102400",
+        "MESA_SHADER_CACHE_DISABLE=false",
+        "MESA_SHADER_CACHE_MAX_SIZE=100G",
         "MESA_SHADER_CACHE_DIR=$HOME/.cache/shaders",
-        "mesa_glthread=true"
     ],
     "Intel": [
-        "MESA_GLSL_CACHE=1",
-        "MESA_GLSL_CACHE_DISABLE_CLEANUP=1",
-        "MESA_GLSL_CACHE_MAX_SIZE=102400",
+        "MESA_SHADER_CACHE_DISABLE=false",
+        "MESA_SHADER_CACHE_MAX_SIZE=100G",
         "MESA_SHADER_CACHE_DIR=$HOME/.cache/shaders",
-        "mesa_glthread=true"
     ]
 }
 
