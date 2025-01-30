@@ -21,12 +21,6 @@ This Script combines all my Install Scripts for a Clean Archlinux Installation
 
 ```bash
     # The following commands are for Mesa (AMD/Intel)
-    MESA_GLSL_CACHE=1
-    MESA_GLSL_CACHE_DISABLE_CLEANUP=1
-    MESA_GLSL_CACHE_MAX_SIZE=102400
-    MESA_GLSL_CACHE_DIR=/var/cache/shaders
-
-    # Optional: Threaded Rendering für OpenGL
-    # mesa_glthread=true <programmname>
-    mesa_glthread=true
+        MESA_SHADER_CACHE_DISABLE=false
+        MESA_SHADER_CACHE_MAX_SIZE=100G
 ```

@@ -68,12 +68,10 @@ GPU_ENV_CONFIG = {
     "AMD": [
         "MESA_SHADER_CACHE_DISABLE=false",
         "MESA_SHADER_CACHE_MAX_SIZE=100G",
-        "MESA_SHADER_CACHE_DIR=$HOME/.cache/shaders",
     ],
     "Intel": [
         "MESA_SHADER_CACHE_DISABLE=false",
         "MESA_SHADER_CACHE_MAX_SIZE=100G",
-        "MESA_SHADER_CACHE_DIR=$HOME/.cache/shaders",
     ]
 }
 
