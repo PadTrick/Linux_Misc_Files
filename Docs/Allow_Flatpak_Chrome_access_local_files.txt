@@ -1,0 +1,1 @@
+flatpak override --user --filesystem=home com.google.Chrome
