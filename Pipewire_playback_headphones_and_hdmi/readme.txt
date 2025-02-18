@@ -5,6 +5,7 @@
 nano ~/.config/pipewire/elgato-audio-setup.sh
 
 #paste the following inside the script
+#user "pw-link -o" & "pw-link -i" to found your devices
 
 #!/bin/bash
 pw-link alsa_output.pci-0000_0a_00.4.analog-stereo:monitor_FL alsa_output.pci-0000_08_00.0.hdmi-stereo-extra2:playback_FL

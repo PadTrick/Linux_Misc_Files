@@ -1,0 +1,36 @@
+### 1. **Installation**
+Stelle sicher, dass das Paket installiert ist:
+```sh
+sudo pacman -S python-virtualenv
+```
+
+### 2. **Virtuelle Umgebung erstellen**
+Erstelle eine neue virtuelle Umgebung, z. B. `myenv`:
+```sh
+virtualenv myenv
+```
+Oder mit einer bestimmten Python-Version:
+```sh
+virtualenv -p python3 myenv
+```
+
+### 3. **Virtuelle Umgebung aktivieren**
+Sobald die Umgebung erstellt wurde, kannst du sie aktivieren:
+```sh
+source myenv/bin/activate
+```
+
+Nach der Aktivierung sollte sich die Shell ändern und `(myenv)` am Anfang der Zeile anzeigen.
+
+### 4. **Verlassen der virtuellen Umgebung**
+Zum Deaktivieren der Umgebung:
+```sh
+deactivate
+```
+
+Falls du `python-venv` bevorzugst (integriert in Python 3), kannst du stattdessen Folgendes nutzen:
+```sh
+python -m venv myenv
+source myenv/bin/activate
+```
+
