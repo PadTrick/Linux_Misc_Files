@@ -1,0 +1,108 @@
+### **1. OpenSSH installieren**
+Falls OpenSSH noch nicht installiert ist, installiere es mit:
+
+```bash
+sudo apt update
+sudo apt install openssh-server -y
+```
+
+---
+
+### **2. OpenSSH-Dienst aktivieren und starten**
+Aktiviere und starte den SSH-Dienst:
+
+```bash
+sudo systemctl enable --now ssh
+```
+
+Falls der Dienst bereits läuft, kannst du ihn neu starten:
+
+```bash
+sudo systemctl restart ssh
+```
+
+Prüfe, ob der SSH-Server läuft:
+
+```bash
+systemctl status ssh
+```
+
+---
+
+### **3. Firewall konfigurieren**
+Falls `ufw` (Uncomplicated Firewall) aktiviert ist, erlaube SSH:
+
+```bash
+sudo ufw allow OpenSSH
+sudo ufw enable
+```
+
+Falls `iptables` verwendet wird:
+
+```bash
+sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+```
+
+Falls `firewalld` verwendet wird:
+
+```bash
+sudo firewall-cmd --add-service=ssh --permanent
+sudo firewall-cmd --reload
+```
+
+---
+
+### **4. SSH-Konfiguration anpassen (optional)**
+Die Konfigurationsdatei befindet sich unter `/etc/ssh/sshd_config`. Falls du Anpassungen machen willst:
+
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+
+Wichtige Einstellungen:
+- **Root-Login verbieten:**
+  ```ini
+  PermitRootLogin no
+  ```
+- **Passwort-Authentifizierung erlauben (falls gewünscht):**
+  ```ini
+  PasswordAuthentication yes
+  ```
+- **Alternativen SSH-Port festlegen (optional):**
+  ```ini
+  Port 2222
+  ```
+
+Nach Änderungen speichere die Datei (`CTRL + X`, `Y`, `ENTER`) und starte den SSH-Dienst neu:
+
+```bash
+sudo systemctl restart ssh
+```
+
+Falls du den Port geändert hast, musst du ihn in der Firewall freigeben:
+
+```bash
+sudo ufw allow 2222/tcp
+sudo ufw reload
+```
+
+---
+
+### **5. SSH-Zugang testen**
+Von einem anderen Rechner aus kannst du dich per SSH verbinden:
+
+```bash
+ssh benutzername@ip-adresse
+```
+
+Falls du die IP-Adresse nicht kennst:
+
+```bash
+ip a
+```
+
+Falls du SSH auf einem anderen Port als `22` konfiguriert hast:
+
+```bash
+ssh benutzername@ip-adresse -p 2222
+```

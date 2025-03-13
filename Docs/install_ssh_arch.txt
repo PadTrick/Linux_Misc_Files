@@ -1,0 +1,225 @@
+### **1. OpenSSH installieren**
+Falls OpenSSH noch nicht installiert ist, kannst du es mit folgendem Befehl installieren:
+
+```bash
+sudo pacman -S openssh
+```
+
+---
+
+### **2. OpenSSH-Dienst aktivieren und starten**
+Starte den SSH-Dienst und aktiviere ihn, damit er beim Booten automatisch mitgestartet wird:
+
+```bash
+sudo systemctl enable --now sshd
+```
+
+Falls der Dienst bereits läuft, kannst du ihn neu starten:
+
+```bash
+sudo systemctl restart sshd
+```
+
+Prüfe, ob der SSH-Server läuft:
+
+```bash
+systemctl status sshd
+```
+
+---
+
+### **3. Firewall anpassen (falls aktiviert)**
+Falls `ufw` (Uncomplicated Firewall) oder `iptables` aktiv ist, musst du SSH-Zugriffe erlauben.
+
+Mit `ufw`:
+```bash
+sudo ufw allow OpenSSH
+sudo ufw enable
+```
+
+Mit `iptables`:
+```bash
+sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+```
+
+Falls `firewalld` verwendet wUm SSH-Zugriff (sowohl Terminal-SSH als auch SFTP in FileZilla) auf dein Arch Linux System zu ermöglichen, musst du den OpenSSH-Server einrichten und konfigurieren. Hier ist eine Schritt-für-Schritt-Anleitung:
+
+---
+
+### **1. OpenSSH installieren**
+Falls OpenSSH noch nicht installiert ist, kannst du es mit folgendem Befehl installieren:
+
+```bash
+sudo pacman -S openssh
+```
+
+---
+
+### **2. OpenSSH-Dienst aktivieren und starten**
+Starte den SSH-Dienst und aktiviere ihn, damit er beim Booten automatisch mitgestartet wird:
+
+```bash
+sudo systemctl enable --now sshd
+```
+
+Falls der Dienst bereits läuft, kannst du ihn neu starten:
+
+```bash
+sudo systemctl restart sshd
+```
+
+Prüfe, ob der SSH-Server läuft:
+
+```bash
+systemctl status sshd
+```
+
+---
+
+### **3. Firewall anpassen (falls aktiviert)**
+Falls `ufw` (Uncomplicated Firewall) oder `iptables` aktiv ist, musst du SSH-Zugriffe erlauben.
+
+Mit `ufw`:
+```bash
+sudo ufw allow OpenSSH
+sudo ufw enable
+```
+
+Mit `iptables`:
+```bash
+sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+```
+
+Falls `firewalld` verwendet wird:
+```bash
+sudo firewall-cmd --add-service=ssh --permanent
+sudo firewall-cmd --reload
+```
+
+---
+
+### **4. SSH-Konfiguration anpassen (optional)**
+Die Konfigurationsdatei von SSH befindet sich unter `/etc/ssh/sshd_config`. Falls du Anpassungen vornehmen möchtest, kannst du sie mit einem Editor öffnen:
+
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+
+Wichtige Optionen:
+- Stelle sicher, dass `PermitRootLogin` auf `no` gesetzt ist, um Root-Login zu verhindern:
+  ```ini
+  PermitRootLogin no
+  ```
+- Erlaube den Passwort-Login (falls nötig):
+  ```ini
+  PasswordAuthentication yes
+  ```
+
+Speichere die Datei (`CTRL + X`, `Y`, `ENTER`) und lade die SSH-Dienste neu:
+
+```bash
+sudo systemctl restart sshd
+```
+
+---
+
+### **5. SSH-Zugang testen**
+Von einem anderen Rechner aus kannst du dich nun per SSH einloggen:
+
+```bash
+ssh benutzername@ip-adresse
+```
+
+Falls du die IP-Adresse nicht kennst, kannst du sie mit folgendem Befehl auf dem Arch-Linux-Server herausfinden:
+
+```bash
+ip a
+```
+
+Suche nach der IP-Adresse unter `inet`, z. B. `192.168.1.100`.
+
+Falls du SSH auf einem anderen Port als `22` konfiguriert hast, gib den Port an:
+
+```bash
+ssh benutzername@ip-adresse -p PORTNUMMER
+```
+
+---
+
+### **6. SFTP in FileZilla nutzen**
+1. Öffne **FileZilla**.
+2. Gehe zu **Datei → Servermanager**.
+3. Klicke auf **Neuer Server** und gib folgende Daten ein:
+   - **Protokoll**: SFTP – SSH File Transfer Protocol
+   - **Server**: `IP-Adresse des Arch-Servers`
+   - **Port**: `22` (oder den geänderten SSH-Port)
+   - **Verbindungsart**: `Normal`
+   - **Benutzername**: Dein Arch-Linux-Benutzername
+   - **Passwort**: Dein Passwort (oder nutze SSH-Schlüssel für eine sicherere Verbindung)
+4. Klicke auf **Verbinden**.
+
+Falls du Probleme mit der Verbindung hast, überprüfe die Datei `/var/log/auth.log` oder `/var/log/secure` auf Fehlermeldungen.
+
+---
+
+### **Fazit**
+Damit SSH und SFTP funktionieren:
+1. Installiere OpenSSH (`sudo pacman -S openssh`).
+2. Aktiviere den SSH-Dienst (`sudo systemctl enable --now sshd`).
+3. Erlaube den Zugriff in der Firewall (`ufw allow OpenSSH` oder `iptables` anpassen).
+4. Teste den Zugang mit `ssh benutzername@ip-adresse`.
+5. Nutze FileZilla mit SFTP für Dateiübertragungen.
+
+Falls du noch Fragen hast oder es nicht klappt, melde dich! 😊ird:
+```bash
+sudo firewall-cmd --add-service=ssh --permanent
+sudo firewall-cmd --reload
+```
+
+---
+
+### **4. SSH-Konfiguration anpassen (optional)**
+Die Konfigurationsdatei von SSH befindet sich unter `/etc/ssh/sshd_config`. Falls du Anpassungen vornehmen möchtest, kannst du sie mit einem Editor öffnen:
+
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+
+Wichtige Optionen:
+- Stelle sicher, dass `PermitRootLogin` auf `no` gesetzt ist, um Root-Login zu verhindern:
+  ```ini
+  PermitRootLogin no
+  ```
+- Erlaube den Passwort-Login (falls nötig):
+  ```ini
+  PasswordAuthentication yes
+  ```
+
+Speichere die Datei (`CTRL + X`, `Y`, `ENTER`) und lade die SSH-Dienste neu:
+
+```bash
+sudo systemctl restart sshd
+```
+
+---
+
+### **5. SSH-Zugang testen**
+Von einem anderen Rechner aus kannst du dich nun per SSH einloggen:
+
+```bash
+ssh benutzername@ip-adresse
+```
+
+Falls du die IP-Adresse nicht kennst, kannst du sie mit folgendem Befehl auf dem Arch-Linux-Server herausfinden:
+
+```bash
+ip a
+```
+
+Suche nach der IP-Adresse unter `inet`, z. B. `192.168.1.100`.
+
+Falls du SSH auf einem anderen Port als `22` konfiguriert hast, gib den Port an:
+
+```bash
+ssh benutzername@ip-adresse -p PORTNUMMER
+```
