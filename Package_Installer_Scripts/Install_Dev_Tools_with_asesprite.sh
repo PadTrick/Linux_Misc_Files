@@ -14,6 +14,8 @@ dotnet new install "Avalonia.Templates"
 echo "See https://github.com/dotnet/templating/wiki/Available-templates-for-dotnet-new for more"
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup target add x86_64-unknown-linux-gnu
+
 
 echo "Installation finished. Please reboot now !!!"
 echo "======================================================"

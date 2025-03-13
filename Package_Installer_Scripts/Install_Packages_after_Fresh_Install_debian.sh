@@ -66,13 +66,34 @@ do
     esac
 done
 
+# Wine
+echo -e "Install Wine?"
+PS3='Select: '
+opt3=("Yes" "No")
+select opt4 in "${opt4[@]}"
+do
+    case $opt4 in
+        "Yes")
+            echo "You chose Yes"
+            WINE_PACKAGE="Yes"
+            break
+            ;;
+        "No")
+            echo "You chose No"
+            WINE_PACKAGE="No"
+            break
+            ;;
+        *) echo "Invalid option $REPLY";;
+    esac
+done
+
 # Summary
 clear
-echo "GPU = $NVIDIA_DRIVER | OBS-Studio = $OBS_PACKAGE | Barrier = $BARRIER_PACKAGE"
+echo "GPU = $NVIDIA_DRIVER | OBS-Studio = $OBS_PACKAGE | Barrier = $BARRIER_PACKAGE | Wine = $WINE_PACKAGE"
 echo ""
-PS4='Select: '
-opt4=("Continue")
-select opt4 in "${opt4[@]}"
+PS5='Select: '
+opt5=("Continue")
+select opt5 in "${opt5[@]}"
 do
     case $opt4 in
         "Continue")
@@ -126,15 +147,6 @@ fi
 echo "Installing useful packages"
 sudo apt install -y btrfs-progs unrar sudo libvulkan1 libvulkan1:i386 pkexec
 
-# Install Wine
-echo "Installing Wine"
-sudo mkdir -pm755 /etc/apt/keyrings
-sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources
-sudo apt-get update
-sudo apt-get install -y winehq-staging
-sudo apt-get install -y winetricks
-
 # Install OBS-Studio if selected
 if [ "$OBS_PACKAGE" == "Yes" ]; then
     echo "Installing OBS-Studio"
@@ -145,6 +157,17 @@ fi
 if [ "$BARRIER_PACKAGE" == "Yes" ]; then
     echo "Installing Barrier"
     sudo apt install -y barrier
+fi
+
+# Install Wine if selected
+if [ "$WINE_PACKAGE" == "Yes" ]; then
+    echo "Installing Wine"
+    sudo mkdir -pm755 /etc/apt/keyrings
+    sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+    sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources
+    sudo apt-get update
+    sudo apt-get install -y winehq-staging
+    sudo apt-get install -y winetricks
 fi
 
 # Final message and reboot prompt
