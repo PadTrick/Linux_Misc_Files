@@ -512,7 +512,7 @@ fi
 
 if [ "$XBOX_DRIVER" == "Yes" ]; then
     echo "Installing Xbox One Wireless Gamepad Drivers"
-    yay -S xone-dlundqvist-dkms-git --noconfirm
+    yay -S xone-dkms-git xone-dongle-firmware --noconfirm
     echo "Xbox One Gamepad Driver installed !!!"
 fi
 

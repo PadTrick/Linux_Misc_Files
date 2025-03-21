@@ -13,7 +13,7 @@ pw-link alsa_output.pci-0000_0a_00.4.analog-stereo:monitor_FR alsa_output.pci-00
 
 #make the script executable
 
-chmod +x ~/.config/pipewire/elgato-audio-setup.sh
+chmod +x ~/.config/pipewire/elgato_audio_setup.sh
 
 
 #create the service script
@@ -28,7 +28,7 @@ After=pipewire.service
 Requires=pipewire.service
 
 [Service]
-ExecStart=/bin/bash -c "sleep 5; /home/padtrick/.config/pipewire/elgato-audio-setup.sh"
+ExecStart=/bin/bash -c "sleep 5; /home/padtrick/.config/pipewire/elgato_audio_setup.sh"
 Type=oneshot
 RemainAfterExit=true
 

@@ -1,0 +1,2 @@
+#Gamescope v 3.14.24 | 4:3 strech
+LD_PRELOAD="" gamemoderun mangohud gamescope -w 1280 -h 960 -r 240 -S stretch -f -- %command% -noforcemaccel -preload 1 -noaafonts -nojoy -novid -w 1280 -h 960 -heapsize 16777216 -high
