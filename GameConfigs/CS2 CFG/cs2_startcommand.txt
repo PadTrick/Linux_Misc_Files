@@ -1,4 +1,4 @@
-#Gamescope v 3.14.29+ |  4:3 strech
+#Gamescope v 3.14.29+ |  4:3 strech | Seems to be fixed now testen v3.16.2
 LD_PRELOAD="" gamemoderun mangohud gamescope -w 1280 -h 960 -r 240 -S stretch -f --force-grab-cursor -- %command% -vulkan -fullscreen -w 1280 -h 960 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
 #Gamescope v 3.14.24 | 4:3 strech
 LD_PRELOAD="" gamemoderun mangohud gamescope -w 1280 -h 960 -r 240 -S stretch -f -- %command% -vulkan -fullscreen -w 1280 -h 960 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
