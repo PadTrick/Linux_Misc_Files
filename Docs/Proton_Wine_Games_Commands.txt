@@ -59,6 +59,7 @@ uplay://launch/568/0 gamemoderun mangohud %command%
 
 Tom Clancy's The Division® 2:
 uplay://launch/4932/0 gamemoderun mangohud %command% PROTON_EAC_RUNTIME="/home/padtrick/.local/share/Steam/steamapps/common/Proton EasyAntiCheat Runtime/"
+To get it working, run winecfg, goto staging Tab and Hide Wine Version (only available on wineGE/ProtonGE)
 
 Tom Clancy's Ghost Recon® Breakpoint:
 uplay://launch/11903/0 gamemoderun mangohud %command% #DX
