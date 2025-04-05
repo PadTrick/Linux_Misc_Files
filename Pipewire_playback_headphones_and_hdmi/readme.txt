@@ -2,7 +2,7 @@
 
 #create the script
 
-nano ~/.config/pipewire/elgato-audio-setup.sh
+nano ~/.config/pipewire/elgato_audio_setup.sh
 
 #paste the following inside the script
 #user "pw-link -o" & "pw-link -i" to find your devices
