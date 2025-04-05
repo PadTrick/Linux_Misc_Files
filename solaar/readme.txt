@@ -20,7 +20,7 @@ pkill solaar
 
 #Dont forget to edit Exec path
 
-# ~/.config/autostart/
+# ~/.config/autostart/solaar-init.desktop
 #
 [Desktop Entry]
 Type=Application
