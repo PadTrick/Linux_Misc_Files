@@ -1,1 +1,8 @@
-gamemoderun mangohud gamescope -w 1280 -h 960 -r 165 -S stretch -f -- %command% -vulkan -fullscreen -w 1280 -h 960 -refresh 165 -console -novid -language english -threads 8 -nojoy -high
+#Gamescope v 3.14.29+ |  4:3 strech | Mouse seems to be fixed now testen v3.16.2
+LD_PRELOAD="" gamemoderun mangohud gamescope -w 1280 -h 960 -r 240 -S stretch -f --force-grab-cursor -- %command% -vulkan -fullscreen -w 1280 -h 960 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
+#Gamescope v 3.14.29+ |  16:9 strech | Mouse seems to be fixed now testen v3.16.2
+LD_PRELOAD="" gamemoderun mangohud gamescope -w 1920 -h 1080 -r 240 -S stretch -f --force-grab-cursor -- %command% -vulkan -fullscreen -w 1920 -h 1080 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
+#Gamescope v 3.14.24 | 4:3 strech
+LD_PRELOAD="" gamemoderun mangohud gamescope -w 1280 -h 960 -r 240 -S stretch -f -- %command% -vulkan -fullscreen -w 1280 -h 960 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
+#Gamescope v 3.14.24 + 16:9
+LD_PRELOAD="" gamemoderun mangohud gamescope -w 1280 -h 720 -r 240 -S stretch -f -- %command% -vulkan -fullscreen -w 1280 -h 720 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
