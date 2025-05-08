@@ -15,6 +15,12 @@ echo "See https://github.com/dotnet/templating/wiki/Available-templates-for-dotn
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
+. "$HOME/.cargo/env"
+
+rustup target add x86_64-unknown-linux-gnu
+rustup target add i686-unknown-linux-gnu
+
+
 echo "Installation finished. Please reboot now !!!"
 echo "======================================================"
 echo "To fix runtime errors with RustRover,WebStorm and Aqua"

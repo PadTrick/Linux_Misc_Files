@@ -26,3 +26,53 @@ batch file you created earlier.
 After that, just hit "OK" to save everything.
 
 now the timesync should reset at every reboot after few seconds.
+
+=============================================================================================================
+
+Arch Linux
+
+sudo timedatectl set-timezone "Europe/Berlin"  # Beispiel für Deutschland
+
+Liste verfügbarer Zeitzonen:
+timedatectl list-timezones
+
+---
+
+Arch Linux verwendet standardmäßig `systemd-timesyncd`:
+
+sudo timedatectl set-ntp true   # Aktivieren
+sudo timedatectl set-ntp false  # Deaktivieren (für manuelle Zeit)
+
+Status prüfen:
+
+timedatectl status
+
+---
+
+### **Windows/Linux Zeitkonflikt beheben**
+#### **Option A: Linux auf "Local Time" umstellen (empfohlen für Dual Boot mit Windows)**
+```sh
+sudo timedatectl set-local-rtc 1 --adjust-system-clock
+```
+(Dies bewirkt, dass Linux die Hardware-Uhr wie Windows in lokaler Zeit speichert.)
+
+#### **Option B: Windows auf UTC umstellen (falls du stattdessen Windows anpassen willst)**
+Öffne Regedit (als Admin).
+
+Navigiere zu:
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation
+Erstelle einen neuen DWORD-Wert (32-Bit) namens RealTimeIsUniversal und setze ihn auf 1.
+
+Starte Windows neu.
+
+---
+
+### **Zusammenfassung der wichtigsten Befehle**
+| Befehl | Beschreibung |
+|--------|-------------|
+| `timedatectl` | Zeigt aktuelle Zeit- und Zeitzonen-Info an. |
+| `sudo timedatectl set-time "YYYY-MM-DD HH:MM:SS"` | Setzt die Systemzeit manuell. |
+| `sudo hwclock --set --date "YYYY-MM-DD HH:MM:SS"` | Setzt die Hardware-Uhr (RTC). |
+| `sudo timedatectl set-local-rtc 1` | Linux verwendet lokale Zeit für RTC (Windows-kompatibel). |
+| `sudo timedatectl set-ntp true` | Aktiviert automatische Zeitsynchronisation. |
