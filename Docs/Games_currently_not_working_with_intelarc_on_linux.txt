@@ -1,5 +1,5 @@
-- Remnant 2 (dx12 error popup window)
+- Remnant 2 (dx12 error popup window) fixed with git version
 - Elite Dangerous (crashes on planet generation) - Legacy Version works, but had to disable Ambient Occlusion
   gamemoderun mangohud ANV_NO_GPL=1 force_vk_vendor=-1 %command% -opengl -SkipBuildPatchPrereq
-- The First Descendant (dx12 error popup window)
-- Ghost Recon: Breakpoint (crash on shader compile, vk_wine error)
+- The First Descendant (dx12 error popup window) fixed with git version
+- Ghost Recon: Breakpoint vulkan renderer freezes whole system every few seconds for ~1-2 seconds. dx renderer works, but performance is low

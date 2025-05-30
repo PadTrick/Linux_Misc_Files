@@ -1,0 +1,42 @@
+Maximize Returnal graphics on PC (updated 2025)
+1. Change In-game settings:
+Turn off up scaling (recommended).
+Turn off the two Ray-Tracing-related features in the game because the graphic gains do not justify the performance loss and stutters. The scenery shadow would look better than RT after you have made the tweaks mentioned in this post.
+Turn off Vsync (you can keep it on if you prefer)
+Set "Max frames per second" to at least 60 (90 & higher for best experience).
+Set "Screen optimizations" to Off.
+Set "Film grain" to 0%.
+You may adjust any other settings you deem appropriate.
+
+2. Find the engine.ini file at C:/Users/"your username"/AppData/Local/Returnal/Steam/Saved/Config/WindowsNoEditor/Engine.ini
+Open it with windows notepad, add the following to the bottom:
+
+[SystemSettings]
+r.DefaultFeature.AntiAliasing=2
+r.TemporalAA.HistoryScreenPercentage=200
+r.Tonemapper.Quality=1
+r.Tonemapper.Sharpen=2.5
+r.StaticMeshLODDistanceScale=0.1
+r.SkeletalMeshLODBias=-2
+r.Shadow.MaxCSMResolution=6144
+r.Shadow.RadiusThreshold=0.001
+r.Shadow.FilterMethod=2
+r.Shadow.DistanceScale=3
+foliage.LODDistanceScale=3
+r.ViewDistanceScale=3
+r.SSGI.Enable=1
+
+Some clarifications, feel free to exclude or modify lines that you don't need:
+r.DefaultFeature.AntiAliasing=2, set Antialiasing method, 0 is no AA (recommended), 1 is FXAA, 2 is TAA (default).
+r.TemporalAA.HistoryScreenPercentage=200, greatly eliminates blur during player movement caused by TAA, at the cost of <1 fps. Strongly recommended.
+r.Tonemapper.Quality=1, remove vignette effect from the game.
+r.Tonemapper.Sharpen=2.5, set sharpness for the overall image. Higher value gives sharper image. At 1080p, 2.5 is recommended for TAA, 1 is recommended for no AA. Value may differ for different resolutions, so experiment yourself.
+r.StaticMeshLODDistanceScale=0.1, distant ground terrain will be rendered in full detail. Very minimal impact on performance.
+r.SkeletalMeshLODBias=-2, enemies at distance will be rendered in full detail. Minimal impact on performance for this game. Highly recommended.
+r.Shadow.MaxCSMResolution=6144, greatly increases shadow quality. Default was 2048. It could be taxing for older GPUs but offers little challenge for newer GPUs. If you're worried about performance, remove this line. Upper limit is 8192.
+r.Shadow.RadiusThreshold=0.001, certain distant objects don't cast shadows, this fixes it. Minimal impact on performance.
+r.Shadow.FilterMethod=2, soften shadow edge sharpness to make them look more realistic. Minimal impact on performance.
+r.Shadow.DistanceScale=3, render distant shadows; eliminate shadow pop-ins during gameplay. Greatly reduce performance. Value can be increased further.
+foliage.LODDistanceScale=3, distant foliage (shrubs) will be rendered in full detail. Greatly reduce performance. Value can be increased further.
+r.ViewDistanceScale=3, distant objects (foliage, enemies, pick ups) will be rendered. Greatly reduce performance. Value can be increased further.
+r.SSGI.Enable=1, Enable Screen Space Global Illumination. Fake indirect lighting, mimic lumen in UE5. Minimal impact on performance. Recommended.
