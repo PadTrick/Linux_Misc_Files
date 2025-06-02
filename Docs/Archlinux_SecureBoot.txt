@@ -1,0 +1,105 @@
+### **1. Activate Secure Boot in BIOS/UEFI **
+- Reboot your PC and go into UEFI/BIOS (often `Del`, `F2`, `F12` or `Esc`)
+- Search for the Secure Boot-Option and disable it.
+- Set the Secure Boot-Mode to Setup.
+- Save changes und reboot.
+
+---
+
+### **2. Preparation for Arch Linux**
+Secure Boot requires that all boot components (kernel, bootloader, drivers) be signed. We have two main options:
+
+#### **Option A: Use Pre-Signed Bootloader (Easier)**
+Arch Linux can work with **systemd-boot** or **GRUB** with pre-shared keys.
+
+##### **a) systemd-boot (recommended for simplicity)**
+1. Install the required packages:
+   ```bash
+   sudo pacman -S sbctl
+   ```
+2. Create Secure Boot keys (if not already present):
+   ```bash
+   sudo sbctl create-keys
+   ```
+3. Sign the bootloader and kernel:
+   ```bash
+   sudo sbctl enroll-keys --microsoft
+   sudo sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
+   sudo sbctl sign -s /boot/vmlinuz-linux-zen          # Zen Kernel signieren
+   sudo sbctl sign -s /boot/vmlinuz-linux-lts          # LTS Kernel signieren
+   sudo sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
+   ```
+4. Update the boot entries:
+   ```bash
+   sudo bootctl update
+   ```
+
+##### **b) GRUB (if you use GRUB) (not tested)**
+1. Install `grub` and `efibootmgr`:
+   ```bash
+   sudo pacman -S grub efibootmgr
+   ```
+2. Configure GRUB for Secure Boot:
+   ```bash
+   sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB --modules="normal test sha1 fat" --disable-shim-lock
+   ```
+3. Sign GRUB:
+   ```bash
+   sudo sbctl sign -s /boot/efi/EFI/GRUB/grubx64.efi
+   ```
+
+---
+
+### **1. Set up automatic signing after updates**
+To avoid having to manually sign after each update, you can use **Pacman hooks**. These automatically execute `sbctl sign` as soon as a kernel update is installed.
+
+#### **Step-by-step:**
+1. Create a Pacman hook for kernel updates:
+   ```bash
+   sudo mkdir -p /etc/pacman.d/hooks/
+   sudo nano /etc/pacman.d/hooks/999-sign-kernel-for-sb.hook
+   ```
+
+2. Paste this content (adapt `vmlinuz-*` to your kernel):
+   ```ini
+   [Trigger]
+   Operation = Install
+   Operation = Upgrade
+   Type = Package
+   Target = linux*
+   Target = linux-zen*
+   Target = linux-lts*
+
+   [Action]
+   Description = Signing kernel for Secure Boot
+   When = PostTransaction
+   Exec = /usr/bin/sh -c '/usr/bin/sbctl sign -s /boot/vmlinuz-linux-zen /boot/vmlinuz-linux-lts /boot/initramfs-linux-zen.img /boot/initramfs-linux-lts.img'
+   Depends = sbctl
+   ```
+   - This hook signs **all** kernels (`vmlinuz-linux`, `vmlinuz-linux-zen`, `vmlinuz-linux-lts`).
+
+3. Save the file (`Ctrl+O`, `Enter`, `Ctrl+X`).
+
+---
+
+### **2. Manual signing (if necessary)**
+If the hook doesn't work or you want to manually sign additional kernels:
+```bash
+sudo sbctl sign -s /boot/vmlinuz-linux-zen      # Für Zen-Kernel
+sudo sbctl sign -s /boot/vmlinuz-linux-lts      # Für LTS-Kernel
+```
+
+---
+
+### **3. Should I also sign the initramfs?**
+```bash
+sudo sbctl sign -s /boot/initramfs-linux-zen.img
+sudo sbctl sign -s /boot/initramfs-linux-lts.img
+```
+
+---
+
+### **4. Verify that everything is signed**
+```bash
+sudo sbctl verify
+```
