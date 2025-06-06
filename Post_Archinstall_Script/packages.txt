@@ -1,0 +1,83 @@
+Ok, wir müssen aber aufpassen das dieses Setup in 3 schritten abläuft.
+Erst die normalen archlinux packages installieren, danach soll yay installiert werden und mit yay dann die AUR Packages.
+Ich markiere die AUR pakete. Zu beachten ist aber das die Fonts immer installiert werden sollen.
+Erst die normalen font pakete, danach sollen die font dateien kopiert werden. Danach alle anderen normalen Archlinux pakete installieren.
+Wenn yay installiert wurde, können die AUR fonts installiert werden.
+
+so sieht das in meinem script aktuell aus, das meine normalen archlinux fonts installiert und die font dateien kopiert.
+
+##Fonts
+
+WORKING_DIR=$(pwd)
+sudo mkdir /usr/local/share/fonts
+sudo mkdir /usr/local/share/fonts/otf
+sudo mkdir /usr/local/share/fonts/ttf
+sudo cp -r $WORKING_DIR/otf /usr/local/share/fonts
+sudo cp -r $WORKING_DIR/ttf /usr/local/share/fonts
+
+sudo pacman -S noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-dejavu ttf-liberation ttf-opensans --noconfirm
+
+## Die folgenden pakete werden immer installiert, egal was der benutzer auswählt.
+reflector pacman-contrib packagekit-qt5 flatpak fwupd linux-firmware-qlogic gnome-keyring ntfs-3g dkms linux-lts-headers linux-zen-headers cabextract  curl  glib2  gnome-desktop  gtk3  mesa-utils  unrar p7zip  psmisc  python-dbus  python-distro  python-evdev  python-gobject  python-lxml  python-pillow python-pip python-lxml git fuse2 gawk polkit-kde-agent jre17-openjdk pavucontrol kwalletmanager partitionmanager fastfetch gwenview kcalc qt5-imageformats qt6-imageformats btop wine-staging winetricks giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox fmt lib32-sdl2 lib32-sdl2_image lib32-sdl2_mixer lib32-sdl2_ttf sdl2 sdl2_image sdl2_mixer sdl2_ttf
+
+##GPU Driver
+- Intel Arc : intel-graphics-compiler intel-compute-runtime mesa lib32-mesa vulkan-headers vulkan-validation-layers vulkan-tools libva-intel-driver libvdpau-va-gl libva-utils intel-ucode intel-media-driver linux-firmware directx-headers mesa-vdpau lib32-mesa-vdpau libva-mesa-driver lib32-libva-mesa-driver vulkan-mesa-layers lib32-vulkan-mesa-layers vulkan-driver lib32-vulkan-driver
+
+- AMD: mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon amdvlk lib32-amdvlk libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau
+
+- NVIDIA (up to GTX 10XX Series): vulkan-icd-loader lib32-vulkan-icd-loader nvidia-utils lib32-nvidia-utils nvidia-settings lib32-opencl-nvidia opencl-nvidia
+
+- NVIDIA (RTX 20XX Series and never): vulkan-icd-loader lib32-vulkan-icd-loader nvidia-utils lib32-nvidia-utils nvidia-settings lib32-opencl-nvidia opencl-nvidia # die pakete werden sich ändern, ist aktuell nur ein platzhalter
+
+- Hyper-V: xf86-video-fbdev
+
+##MOUSE Driver
+solaar piper
+
+##Wacom Drawing Tablet drivers
+xf86-input-wacom libwacom usbutils wacomtablet
+
+##LibreOffice
+libreoffice-still libreoffice-still-de hunspell-de
+
+## Utiliy
+spectacle cpupower
+
+##media player
+vlc
+
+##internet
+firefox vivaldi filezilla
+
+##gaming
+mangohud lib32-mangohud goverlay gamescope steam gamemode lib32-gamemode lutris
+
+##yay installieren
+aktuell mache ich das in meinem script wie folgt:
+WORKING_DIR=$(pwd)
+#Yet another yogurt. Pacman wrapper and AUR helper.
+echo "Installing yay"
+echo "creating dir $HOME/git and cloning all packages into it"
+mkdir $HOME/git
+cd $HOME/git
+echo "cloning yay to $HOME/git"
+git clone https://aur.archlinux.org/yay.git
+echo "Installing yay"
+cd yay && makepkg -si
+cd $HOME/git
+echo "yay installed !!!"
+
+danach kann ich ganz normal sachen mit yay installieren.
+
+
+##AUR xwayland and xwaylandvideobridge
+xorg-xwayland xwaylandvideobridge
+
+##AUR xbox one gamepad driver
+xone-dkms-git xone-dongle-firmware
+
+##AUR ast, aic94xx, wd719x & upd72020x-fw Firmware
+ast-fw aic94xx-firmware wd719x-firmware upd72020x-fw
+
+## Die folgenden AUR pakete werden immer installiert, egal was der benutzer auswählt.
+downgrade protontricks-git protonup-qt heroic-games-launcher-bin vkbasalt lib32-vkbasalt vesktop
