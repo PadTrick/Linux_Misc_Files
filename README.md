@@ -33,7 +33,7 @@ Perfekt für Arch Linux Nutzer, Gamer und Enthusiasten.
      - `Pipewire_playback_headphones_and_hdmi` – Headphones and HDMI Audio Routing
 
 ### 6. **Increase_Shader_Cache/**  
-   - Tweaks für GPU-Cache (NVIDIA/AMD/Intel):  
+   - Tweaks für GPU-Cache (NVIDIA/AMD/Intel)
 
 ### 7. **jdownloader2_installation/**  
    - Installationsskript für JDownloader 2  
@@ -43,7 +43,7 @@ Perfekt für Arch Linux Nutzer, Gamer und Enthusiasten.
    - Eigene Installationsskripte für Lutris
 
 ### 9. **Package_Installer_Scripts/**  
-   - Automatisierte Software-Installation:
+   - Automatisierte Software-Installation
 
 ### 10. **Scripts/**  
    - Nützliche Kleinigkeiten
