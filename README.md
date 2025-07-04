@@ -1,34 +1,56 @@
-## 📂 **Struktur**  
+# Linux_Misc_Files 🐧
+
+Eine umfangreiche Sammlung von Linux-Skripten, Konfigurationen, Firmware und Tools für Systemoptimierung, Gaming und Hardware-Einrichtung.  
+Perfekt für Arch Linux Nutzer, Gamer und Enthusiasten.
+
+---
+
+## 📂 **Struktur & Inhalte**
 
 ### 1. **Docs/**  
-   Sammlung von Textdokumenten mit nützlichen Informationen,
-   zum beispiel "archinstaller_issues.txt" welches Informationen
-   enthält um Probleme bei der Archlinux Installation zu beheben.
+   - Textdokumente mit Lösungen für häufige Linux-Probleme  
+   - Beispiele:  
+     - `archinstaller_issues.txt` – Lösungen für Arch Linux Installationsprobleme  
 
 ### 2. **Firmwares/**  
-   Sammlung von Firmware die nicht in den Offiziellen Archlinux Repos enthalten ist.  
+   - Proprietäre/experimentelle Firmware für Hardware:  
+     - Nicht in offiziellen Arch Linux Repos verfügbar  
 
 ### 3. **Fonts/**  
-   Schriftarten und ein Installationsskript. 
+   - Benutzerdefinierte Schriftarten + Installationsskript  
+   - Nutzung:  
+     ```bash
+     chmod +x Copy_Fonts_archlinux.sh && ./Copy_Fonts_archlinux.sh.sh
+     ```
 
 ### 4. **GameConfigs/**  
-   Sammlung diverser Configs bzw. Settings für unterschiedliche Spiele.  
+   - Optimierte Einstellungen für Spiele:  
+     - Grafikeinstellungen, Keybindings, Performance-Tweaks  
 
 ### 5. **hw_setup/**  
-   Sammlung diverser Skripte zum einstellen der Hardware, zum beispiel
-   Line-in Audio Playback oder Audio-Ausgabe auf Kopfhörer und HDMI.
-   
+   - Skripte für Hardware-Konfiguration:  
+     - `Pipewire_LineIn_Playback` – Line-In Audio Routing  
+     - `Pipewire_playback_headphones_and_hdmi` – Headphones and HDMI Audio Routing
+
 ### 6. **Increase_Shader_Cache/**  
-   Beispiele zum erhöhen der Cache größte für NVIDIA, AMD & Intel GPUs.
+   - Tweaks für GPU-Cache (NVIDIA/AMD/Intel):  
 
 ### 7. **jdownloader2_installation/**  
-   Installationsskript (für 1.Installation), sowie eine Readme.txt falls Probleme auftreten.
+   - Installationsskript für JDownloader 2  
+   - `README.txt` – Bei Problemen lesen
 
 ### 8. **Lutris_Installer_Scripts/**  
-   Sammlung eigener Lutris Installationsskripte.
+   - Eigene Installationsskripte für Lutris
 
 ### 9. **Package_Installer_Scripts/**  
-   Sammlung diverser Skripte zur Installation von Software. zB Intel Arc Treiber, Entwickler Werkzeuge etc.
+   - Automatisierte Software-Installation:
 
 ### 10. **Scripts/**  
-   Sammlung diverser kleiner Skripte. zB Konvertieren von m4a zu mp3
+   - Nützliche Kleinigkeiten
+
+---
+
+## 🛠️ **Nutzung**  
+1. Skripte ausführbar machen:  
+   ```bash
+   chmod +x path/to/script.sh
