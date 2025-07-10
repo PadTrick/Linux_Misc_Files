@@ -231,7 +231,7 @@ sudo pacman -S spectacle --noconfirm
 sudo pacman -S cpupower --noconfirm
 
 #media player
-sudo pacman -S vlc --noconfirm
+sudo pacman -S vlc vlc-plugins-all --noconfirm
 
 #browsers
 sudo pacman -S firefox vivaldi --noconfirm
