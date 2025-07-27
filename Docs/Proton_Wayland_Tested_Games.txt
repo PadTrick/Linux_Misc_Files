@@ -1,0 +1,26 @@
+- Baldur's Gate 3
+- Banishers: Ghost of New Eden
+- Counter-Strike 2    # Gamescope doesnt work correctly using PROTON_WAYLAND. Without force-grab-curser a Mousecursor is at top left corner, but you control a invisible one. with force-grab-curser the cursor doesnt disappear when it should, it also doesnt behave correctly ingame
+- Dark Souls II: Scholar of the First Sin
+- Dark Souls III
+- Dune: Awakening
+- Elden Ring
+- Final Fantasy VII
+- Final Fantasy VIII
+- Final Fantasy IX
+- Final Fantasy X/X-2 HD Remaster
+- Helldivers 2
+- Metal Gear Solid V: The Phantom Pain
+- Monster Hunter Rise
+- Monster Hunter Stories
+- Monster Hunter Stories 2: Wings of Ruin
+- Monster Hunter World
+- No Man's Sky
+- Palia
+- Path of Exile 2
+- Read Dead Redemption 2  #Using PROTON_WAYLAND the Rockstar Launcher cant connect to services, which prevents the game to start
+- Remnant II
+- Returnal
+- Soulframe   #Using PROTON_WAYLAND Launcher is rendered black. adding "--in-process-gpu" fixes it
+- V Rising
+- Warframe    #Using PROTON_WAYLAND Launcher is rendered black. adding "--in-process-gpu" fixes it

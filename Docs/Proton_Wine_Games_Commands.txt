@@ -1,3 +1,6 @@
+#If some Game Launcher is rendered black try using --in-process-gpu
+gamemoderun mangohud %command% --in-process-gpu
+
 #Commands i use for Wine/Proton Games. Maybe be different for you.
 
 #Intel ARC

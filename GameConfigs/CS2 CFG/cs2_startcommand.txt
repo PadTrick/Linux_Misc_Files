@@ -1,8 +1,11 @@
+#Gamescope v 3.14.29+ |  16:9 strech | Wayland | Gamescope currenty doesnt work correctly with Wayland. Without force-grab-curser a Mousecursor is at top left corner, but you control a invisible one. with that command the cursor doesnt disappear when it should, it also doesnt behave correctly ingame
+gamemoderun gamescope -w 1280 -h 720 -r 240 -S stretch -f --expose-wayland --mangoapp --force-grab-cursor -- %command% -vulkan -fullscreen -w 1280 -h 720 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
+gamemoderun mangohud %command% -fullscreen -w 1280 -h 720 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
 #Gamescope v 3.14.29+ |  4:3 strech | Mouse seems to be fixed with v3.16.2 | v3.16.3 has bugs with cursor
-LD_PRELOAD="" gamemoderun mangohud gamescope -w 1280 -h 960 -r 240 -S stretch -f --force-grab-cursor -- %command% -vulkan -fullscreen -w 1280 -h 960 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
+LD_PRELOAD="" gamemoderun mangohud gamescope -w 1280 -h 960 -r 240 -S stretch -f --force-grab-cursor -- %command% -fullscreen -w 1280 -h 960 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
 #Gamescope v 3.14.29+ |  16:9 strech | Mouse seems to be fixed now testen v3.16.2
-LD_PRELOAD="" gamemoderun mangohud gamescope -w 1920 -h 1080 -r 240 -S stretch -f --force-grab-cursor -- %command% -vulkan -fullscreen -w 1920 -h 1080 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
+LD_PRELOAD="" gamemoderun mangohud gamescope -w 1920 -h 1080 -r 240 -S stretch -f --force-grab-cursor -- %command% -fullscreen -w 1920 -h 1080 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
 #Gamescope v 3.14.24 | 4:3 strech
-LD_PRELOAD="" gamemoderun mangohud gamescope -w 1280 -h 960 -r 240 -S stretch -f -- %command% -vulkan -fullscreen -w 1280 -h 960 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
+LD_PRELOAD="" gamemoderun mangohud gamescope -w 1280 -h 960 -r 240 -S stretch -f -- %command% -fullscreen -w 1280 -h 960 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
 #Gamescope v 3.14.24 + 16:9
-LD_PRELOAD="" gamemoderun mangohud gamescope -w 1280 -h 720 -r 240 -S stretch -f -- %command% -vulkan -fullscreen -w 1280 -h 720 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
+LD_PRELOAD="" gamemoderun mangohud gamescope -w 1280 -h 720 -r 240 -S stretch -f -- %command% -fullscreen -w 1280 -h 720 -refresh 240 -console -novid -language english -threads 8 -nojoy -high

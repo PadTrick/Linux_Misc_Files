@@ -1,0 +1,9 @@
+To enable wayland gaming add the following to /etc/environment
+#Enable Wayland for Proton - remove this here if hyprland or others are installed to prevent issues.
+PROTON_ENABLE_WAYLAND=1
+
+For Counter-Strike 2 edit cs2.sh
+change
+export SDL_VIDEO_DRIVER=x11
+to
+export SDL_VIDEO_DRIVER=wayland
