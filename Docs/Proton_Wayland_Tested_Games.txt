@@ -1,3 +1,4 @@
+- 7 Days to Die
 - Baldur's Gate 3
 - Banishers: Ghost of New Eden
 - Counter-Strike 2    # Gamescope doesnt work correctly using PROTON_WAYLAND. Without force-grab-curser a Mousecursor is at top left corner, but you control a invisible one. with force-grab-curser the cursor doesnt disappear when it should, it also doesnt behave correctly ingame
@@ -22,5 +23,8 @@
 - Remnant II
 - Returnal
 - Soulframe   #Using PROTON_WAYLAND Launcher is rendered black. adding "--in-process-gpu" fixes it
+- The Thaumaturge
+- The Witcher 3: Wild Hunt
+- Umamusume: Pretty Derby
 - V Rising
 - Warframe    #Using PROTON_WAYLAND Launcher is rendered black. adding "--in-process-gpu" fixes it
