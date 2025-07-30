@@ -1,7 +1,7 @@
 - 7 Days to Die
 - Baldur's Gate 3
 - Banishers: Ghost of New Eden
-- Counter-Strike 2    # Gamescope doesnt work correctly using PROTON_WAYLAND. Without force-grab-curser a Mousecursor is at top left corner, but you control a invisible one. with force-grab-curser the cursor doesnt disappear when it should, it also doesnt behave correctly ingame
+- Counter-Strike 2    # Gamescope doesnt work correctly using WAYLAND. Without force-grab-curser a Mousecursor is at top left corner, but you control a invisible one. with force-grab-curser the cursor doesnt disappear when it should, it also doesnt behave correctly ingame
 - Dark Souls II: Scholar of the First Sin
 - Dark Souls III
 - Dune: Awakening
