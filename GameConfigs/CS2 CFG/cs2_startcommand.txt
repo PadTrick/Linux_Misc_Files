@@ -9,3 +9,6 @@ LD_PRELOAD="" gamemoderun mangohud gamescope -w 1920 -h 1080 -r 240 -S stretch -
 LD_PRELOAD="" gamemoderun mangohud gamescope -w 1280 -h 960 -r 240 -S stretch -f -- %command% -fullscreen -w 1280 -h 960 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
 #Gamescope v 3.14.24 + 16:9
 LD_PRELOAD="" gamemoderun mangohud gamescope -w 1280 -h 720 -r 240 -S stretch -f -- %command% -fullscreen -w 1280 -h 720 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
+
+#Hyprland
+SDL_VIDEODRIVER=wayland gamemoderun mangohud %command% -vulkan -window -w 1280 -h 720 -vulkan -refresh 240 -console -novid -language english -threads 8 -nojoy -high

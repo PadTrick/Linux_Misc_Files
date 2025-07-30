@@ -237,7 +237,7 @@ sudo pacman -S vlc vlc-plugins-all --noconfirm
 sudo pacman -S vivaldi --noconfirm
 
 #gaming overlay
-sudo pacman -S mangohud lib32-mangohud goverlay --noconfirm
+sudo pacman -S mangohud lib32-mangohud --noconfirm
 
 #Wine and dependencies
 sudo pacman -S wine-staging winetricks --noconfirm
@@ -549,7 +549,7 @@ if [ "$INSTALL_PIPER_GIT" == "Yes" ]; then
 fi
 
 yay -Syyu
-yay -S downgrade protontricks-git protonup-qt heroic-games-launcher-bin vkbasalt lib32-vkbasalt vesktop --noconfirm
+yay -S mangojuice downgrade protontricks-git protonup-qt heroic-games-launcher-bin vkbasalt lib32-vkbasalt vesktop --noconfirm
 
 echo "Installation finished. Please reboot now !!!"
 
