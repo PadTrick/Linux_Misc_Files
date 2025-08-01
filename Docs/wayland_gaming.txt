@@ -4,6 +4,7 @@ PROTON_ENABLE_WAYLAND=1
 
 #cs2 devs seems to have changed the cs2.sh simply add the following to your /etc/environment
 SDL_VIDEODRIVER=wayland
+SDL_VIDEO_DRIVER=wayland
 
 #old method
 For Counter-Strike 2 edit cs2.sh
