@@ -1,19 +1,29 @@
-sudo pacman -S git curl flatpak
+#Disabling build for debug packages
+[ ! -f /etc/makepkg.conf.bak ] && sudo cp /etc/makepkg.conf /etc/makepkg.conf.bak
+
+if ! grep -q '^#DEBUG_CFLAGS="-g"' /etc/makepkg.conf; then
+    sudo sed -i 's/^DEBUG_CFLAGS="-g"/#DEBUG_CFLAGS="-g"/' /etc/makepkg.conf
+fi
+
+if ! grep -q '^#DEBUG_CXXFLAGS="\$DEBUG_CFLAGS"' /etc/makepkg.conf; then
+    sudo sed -i 's/^DEBUG_CXXFLAGS="\$DEBUG_CFLAGS"/#DEBUG_CXXFLAGS="$DEBUG_CFLAGS"/' /etc/makepkg.conf
+fi
+
+if grep -q 'OPTIONS=.*[^!]debug' /etc/makepkg.conf; then
+    sudo sed -i 's/OPTIONS=(\(.*\)debug\(.*\))/OPTIONS=(\1!debug\2)/' /etc/makepkg.conf
+fi
+
+sudo pacman -S git curl
 
 clear
 echo -e "Choose your packages to install \n"
 #GPU Drivers
 echo -e "Which Hyprland Dot Files should be installed ?"
 PS1='Select: '
-opt1=("ML4W" "JaKooLit" "end_4" "HyDE")
+opt1=("JaKooLit" "end_4" "HyDE")
 select opt1 in "${opt1[@]}"
 do
     case $opt1 in
-        "ML4W")
-            echo "you choose ML4W"
-            DOT_FILES="ML4W"
-            break
-            ;;
         "JaKooLit")
             echo "you choose JaKooLit"
             DOT_FILES="JaKooLit"
@@ -33,14 +43,6 @@ do
     esac
 done
 clear
-
-if [ "$DOT_FILES" == "ML4W" ]; then
-    echo "Installing ML4W Dot Files"
-    mkdir -p ~/Downloads
-    curl -o ~/Downloads/hyprland-dotfiles-stable.dotinst https://raw.githubusercontent.com/mylinuxforwork/dotfiles/main/hyprland-dotfiles-stable.dotinst
-    flatpak install flathub com.ml4w.dotfilesinstaller
-    flatpak run com.ml4w.dotfilesinstaller
-fi
 
 if [ "$DOT_FILES" == "JaKooLit" ]; then
     echo "Installing JaKooLit Dot Files"

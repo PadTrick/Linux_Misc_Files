@@ -4,6 +4,22 @@ echo -e "Setting keymap \n"
 sudo localectl --no-convert set-keymap de-latin1-nodeadkeys
 sudo localectl --no-convert set-x11-keymap de pc105 deadgraveacute
 
+#Disabling build for debug packages
+[ ! -f /etc/makepkg.conf.bak ] && sudo cp /etc/makepkg.conf /etc/makepkg.conf.bak
+
+if ! grep -q '^#DEBUG_CFLAGS="-g"' /etc/makepkg.conf; then
+    sudo sed -i 's/^DEBUG_CFLAGS="-g"/#DEBUG_CFLAGS="-g"/' /etc/makepkg.conf
+fi
+
+if ! grep -q '^#DEBUG_CXXFLAGS="\$DEBUG_CFLAGS"' /etc/makepkg.conf; then
+    sudo sed -i 's/^DEBUG_CXXFLAGS="\$DEBUG_CFLAGS"/#DEBUG_CXXFLAGS="$DEBUG_CFLAGS"/' /etc/makepkg.conf
+fi
+
+if grep -q 'OPTIONS=.*[^!]debug' /etc/makepkg.conf; then
+    sudo sed -i 's/OPTIONS=(\(.*\)debug\(.*\))/OPTIONS=(\1!debug\2)/' /etc/makepkg.conf
+fi
+
+
 clear
 echo -e "Choose your packages to install \n"
 #GPU Drivers
@@ -198,6 +214,16 @@ sudo pacman -Syu
 #Discover missing dependencies
 sudo pacman -S packagekit-qt5 flatpak fwupd --noconfirm
 
+#Installing Fonts
+WORKING_DIR=$(pwd)
+sudo mkdir /usr/local/share/fonts
+sudo mkdir /usr/local/share/fonts/otf
+sudo mkdir /usr/local/share/fonts/ttf
+sudo cp -r $WORKING_DIR/otf /usr/local/share/fonts
+sudo cp -r $WORKING_DIR/ttf /usr/local/share/fonts
+
+sudo pacman -S noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-dejavu ttf-liberation ttf-opensans --noconfirm
+
 if [ "$GPU_DRIVER" == "NVIDIA" ]; then
     echo "Installing NVIDIA Drivers"
     #sudo pacman -S vulkan-icd-loader lib32-vulkan-icd-loader nvidia-utils lib32-nvidia-utils nvidia-settings lib32-opencl-nvidia opencl-nvidia --noconfirm
@@ -229,6 +255,13 @@ sudo pacman -S spectacle --noconfirm
 
 #utility to manage cpu frequency etc.
 sudo pacman -S cpupower --noconfirm
+
+#changing governor to ondemand
+[ ! -f /etc/default/cpupower.bak ] && sudo cp /etc/default/cpupower /etc/default/cpupower.bak
+
+if grep -q "^#governor='ondemand'" /etc/default/cpupower; then
+    sudo sed -i "s/^#governor='ondemand'/governor='ondemand'/" /etc/default/cpupower
+fi
 
 #media player
 sudo pacman -S vlc vlc-plugins-all --noconfirm
@@ -288,7 +321,6 @@ if [ "$BARRIER_PACKAGE" == "Yes" ]; then
     echo "Installing Barrier"
     sudo pacman -S barrier --noconfirm
 fi
-
 
 #!/bin/bash
 WORKING_DIR=$(pwd)

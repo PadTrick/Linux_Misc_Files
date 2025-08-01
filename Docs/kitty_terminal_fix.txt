@@ -4,6 +4,6 @@ example:
 nano /etc/environment
 Error opening terminal: xterm-kitty.
 
-add this to your kitty.conf (~./.config/kitty/kitty.conf)
+add this to your kitty.conf (~/.config/kitty/kitty.conf)
 #xterm-kitty fix
 term xterm-256color
