@@ -1,0 +1,51 @@
+autologin:
+sudo nano /etc/sddm.conf
+
+[Autologin]
+User=dein_benutzername
+Session=hyprland.desktop  # Wichtig: Genauer Name aus /usr/share/wayland-sessions/
+Relogin=true              # Automatisch neu einloggen nach Logout
+
+#check Session
+ls /usr/share/wayland-sessions/
+
+#check username
+whoami
+
+disable autologout:
+cp ~/.config/hypr/hypridle.conf ~/.config/hypr/hypridle.conf.bak
+
+nano ~/.config/hypr/hypridle.conf
+
+# general {
+#     lock_cmd = pidof hyprlock || hyprlock
+#     before_sleep_cmd = loginctl lock-session
+# }
+
+# listener {
+#     timeout = 300 # 5min
+#     on-timeout = loginctl lock-session
+# }
+
+Disable PowerSafe:
+
+check systemd powerssafe mode
+
+systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+
+for laptops:
+sudo systemctl stop tlp
+sudo systemctl disable tlp
+
+#Hyprland.conf / Monitor.conf
+# Monitor-Configuration without DPMS
+monitor = DP-1,1920x1080@239.964,1920x0,1
+monitor = DP-3,1920x1080@165.001,0x0,1
+
+#Hyprland.conf
+# deaktivate DPMS completly
+exec-once = xset s off -dpms
+exec-once = swaymsg "output * dpms off"
+
+#Prevent System-Suspend completly
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target

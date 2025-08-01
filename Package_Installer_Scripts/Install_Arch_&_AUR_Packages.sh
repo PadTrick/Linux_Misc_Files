@@ -583,6 +583,8 @@ fi
 yay -Syyu
 yay -S mangojuice downgrade protontricks-git protonup-qt heroic-games-launcher-bin vkbasalt lib32-vkbasalt vesktop --noconfirm
 
+flatpak install flathub com.google.Chrome
+
 echo "Installation finished. Please reboot now !!!"
 
 
