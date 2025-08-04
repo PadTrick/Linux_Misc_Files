@@ -1,5 +1,4 @@
-Ah, perfekt! Da dein **Waybar-Tray bereits korrekt funktioniert** (für Steam, Vesktop etc.), liegt das Problem nur bei den **Windows-Launchern (Battle.net/EA/Epic/Ubisoft/Wargaming)**, die ihr Tray-Icon fälschlicherweise als separates Fenster öffnen. Hier ist die spezifische Lösung:
-
+Not Tested
 ---
 
 ### **1. Window Rules für Launcher-Tray-Fenster (Hyprland)**
@@ -56,17 +55,3 @@ Logge fehlgeschlagene Window Rules:
 ```bash
 tail -f ~/.local/share/hyprland/hyprland.log | grep -i rule
 ```
-
----
-
-### **Zusammenfassung der Aktionen**
-1. **Window Rules** hinzufügen → Verstecke Tray-"Fenster"  
-2. **Wine-Overrides** in Lutris setzen (falls nötig)  
-3. **Launcher-spezifische Tweaks** anwenden  
-
-Danach sollten:  
-✅ Launcher-Hauptfenster normal funktionieren  
-✅ Tray-Icons **nur** im Waybar erscheinen  
-❌ Keine doppelten Fenster mehr existieren  
-
-Falls ein bestimmter Launcher weiter Probleme macht, lass es mich wissen – dann gehen wir den spezifisch an! 🛠️
