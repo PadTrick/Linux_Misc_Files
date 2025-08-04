@@ -1,0 +1,17 @@
+example:
+UUID=xxxx-xxxx  /  ext4  defaults,noatime,discard,commit=60  0  1
+
+Option          Effect
+noatime         Disables recording file access times, reducing write operations (improves SSD lifespan & performance).
+discard	        Enables TRIM support, helping the SSD maintain performance by garbage-collecting unused blocks.
+commit=60       Reduces journal sync frequency to every 60 seconds (improves performance at a slight risk of data loss on crash).
+
+Additional Optimizations (Optional):
+data=writeback (faster but slightly less safe)
+errors=remount-ro (prevents corruption by remounting read-only on errors)
+
+Notes:
+TRIM Alternatives: If discard causes slowdowns, use weekly fstrim instead:
+
+sh
+sudo systemctl enable fstrim.timer --now

@@ -6,7 +6,6 @@ gamemoderun mangohud %command% --in-process-gpu
 #Intel ARC
 #Default works for most Games
 gamemoderun mangohud %command%
-gamemoderun mangohud force_vk_vendor=-1 %command%
 gamemoderun MANGOHUD_CONFIG="fps_limit=60,no_display" mangohud %command%
 
 #Testing

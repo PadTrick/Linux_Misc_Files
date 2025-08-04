@@ -236,7 +236,7 @@ fi
 
 if [ "$GPU_DRIVER" == "INTEL" ]; then
     echo "Installing INTEL Drivers"
-    sudo pacman -S mesa lib32-mesa vulkan-intel lib32-vulkan-intel intel-media-driver linux-firmware intel-graphics-compiler intel-compute-runtime vulkan-headers vulkan-validation-layers vulkan-tools libva-intel-driver libvdpau-va-gl libva-utils intel-ucode directx-headers mesa-vdpau lib32-mesa-vdpau libva-mesa-driver lib32-libva-mesa-driver vulkan-mesa-layers lib32-vulkan-mesa-layers lib32-opencl-clover-mesa opencl-clover-mesa --noconfirm
+    sudo pacman -S mesa lib32-mesa vulkan-intel lib32-vulkan-intel intel-media-driver linux-firmware intel-graphics-compiler intel-compute-runtime vulkan-headers vulkan-validation-layers vulkan-tools libva-intel-driver libvdpau-va-gl libva-utils intel-ucode directx-headers mesa-vdpau lib32-mesa-vdpau libva-mesa-driver lib32-libva-mesa-driver vulkan-mesa-layers lib32-vulkan-mesa-layers --noconfirm
 fi
 
 if [ "$GPU_DRIVER" == "Hyper-V" ]; then
@@ -586,5 +586,4 @@ yay -S mangojuice downgrade protontricks-git protonup-qt heroic-games-launcher-b
 flatpak install flathub com.google.Chrome
 
 echo "Installation finished. Please reboot now !!!"
-
 

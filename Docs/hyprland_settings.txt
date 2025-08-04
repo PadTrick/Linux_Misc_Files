@@ -49,3 +49,9 @@ exec-once = swaymsg "output * dpms off"
 
 #Prevent System-Suspend completly
 sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+
+#fix for gamescope  
+debug {
+  full_cm_proto=true
+}
+

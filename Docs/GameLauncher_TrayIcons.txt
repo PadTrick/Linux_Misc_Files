@@ -1,0 +1,72 @@
+Ah, perfekt! Da dein **Waybar-Tray bereits korrekt funktioniert** (für Steam, Vesktop etc.), liegt das Problem nur bei den **Windows-Launchern (Battle.net/EA/Epic/Ubisoft/Wargaming)**, die ihr Tray-Icon fälschlicherweise als separates Fenster öffnen. Hier ist die spezifische Lösung:
+
+---
+
+### **1. Window Rules für Launcher-Tray-Fenster (Hyprland)**
+Füge dies in `~/.config/hypr/hyprland.conf` ein, um die störenden Tray-Fenster zu verstecken:  
+```ini
+# Verstecke Tray-Icons der Launcher (werden stattdessen im Waybar-Tray angezeigt)
+windowrulev2 = float,class:^(Battle\.net|EADesktop|EpicGamesLauncher|UbisoftConnect|Wargaming\.net)$,title:^(.*Tray.*|.*Notif.*)$
+windowrulev2 = move 10000 10000,class:^(Battle\.net|EADesktop|EpicGamesLauncher|UbisoftConnect|Wargaming\.net)$,title:^(.*Tray.*|.*Notif.*)$
+windowrulev2 = noborder,class:^(Battle\.net|EADesktop|EpicGamesLauncher|UbisoftConnect|Wargaming\.net)$,title:^(.*Tray.*|.*Notif.*)$
+windowrulev2 = pin,class:^(Battle\.net|EADesktop|EpicGamesLauncher|UbisoftConnect|Wargaming\.net)$,title:^(.*Tray.*|.*Notif.*)$
+```
+
+**Erklärung:**  
+- `move 10000 10000` schiebt die Fenster außerhalb des sichtbaren Bereichs  
+- `pin` verhindert, dass sie im Workspace-Wechsel erscheinen  
+- Die Regex `.*Tray.*|.*Notif.*` fängt verschiedene Titelvarianten ab  
+
+---
+
+### **2. Lutris-Wine-Overrides (falls Tray-Icons fehlen)**
+Manche Launcher benötigen Wine-Tweaks für korrekte Tray-Integration:  
+```bash
+# Für Battle.net (Beispiel)
+export WINEDLLOVERRIDES="winemenubuilder.exe=d;taskmgr.exe=d"
+```
+
+Füge dies in die **Lutris-Spielkonfiguration** → **System Options** → **Environment Variables** ein.  
+
+---
+
+### **3. Launcher-spezifische Fixes**
+#### **Epic Games Launcher**
+Füge in `~/.config/hypr/hyprland.conf` hinzu:  
+```ini
+windowrulev2 = nofocus,class:^(EpicGamesLauncher)$,title:^(Epic Games Launcher)$
+```
+
+#### **EA App**
+Erzwinge Dark Mode (reduziert UI-Probleme):  
+```bash
+# In Lutris: EA App → Konfiguration → "Command prefix"
+DXVK_HUD=1 DARK_MODE=1 %command%
+```
+
+---
+
+### **4. Debugging-Tools**
+Prüfe, ob die Regeln greifen:  
+```bash
+hyprctl clients | grep -E "Battle\.net|EADesktop|Epic|Ubisoft|Wargaming"
+```
+
+Logge fehlgeschlagene Window Rules:  
+```bash
+tail -f ~/.local/share/hyprland/hyprland.log | grep -i rule
+```
+
+---
+
+### **Zusammenfassung der Aktionen**
+1. **Window Rules** hinzufügen → Verstecke Tray-"Fenster"  
+2. **Wine-Overrides** in Lutris setzen (falls nötig)  
+3. **Launcher-spezifische Tweaks** anwenden  
+
+Danach sollten:  
+✅ Launcher-Hauptfenster normal funktionieren  
+✅ Tray-Icons **nur** im Waybar erscheinen  
+❌ Keine doppelten Fenster mehr existieren  
+
+Falls ein bestimmter Launcher weiter Probleme macht, lass es mich wissen – dann gehen wir den spezifisch an! 🛠️
