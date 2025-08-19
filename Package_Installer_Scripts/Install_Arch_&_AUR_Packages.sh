@@ -264,7 +264,7 @@ if grep -q "^#governor='ondemand'" /etc/default/cpupower; then
 fi
 
 #media player
-sudo pacman -S vlc vlc-plugins-all --noconfirm
+sudo pacman -S vlc vlc-plugins-all vlc-plugins-base vlc-plugins-extra --noconfirm
 
 #browsers
 sudo pacman -S vivaldi --noconfirm
