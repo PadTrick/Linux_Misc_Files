@@ -59,8 +59,9 @@ Tray Icon floats in it's own window.
 
 ---
 
+Tested Steam Version of Read Dead Redemption 2.
 Rockstar Launcher with wine-wayland renders black. --in-process-gpu doesnt help.
 On first launch i had to use xwayland to press all the buttons and load the game 1 time.
-After than i was able to enable wine-wayland, which resulted in the launcher rendered black.
+After that i was able to enable wine-wayland, which resulted in the launcher rendered black.
 But since i dont have to press any buttons and just wait, it launched the game.
 Tray Icon floats in it's own window.
