@@ -1,11 +1,15 @@
-Battle.Net freezes at login screen if window is moved. Disabling wine-wayland for login and reenabling after that works. Didn't test long. Tray Icon floats in it's own window.
+Battle.Net freezes at login screen if window is moved. Disabling wine-wayland
+for login and reenabling after that works. Didn't test long.
+Tray Icon floats in it's own window.
 
 Ubisoft Connect only renders black with wine-wayland. --in-process-gpu doesnt help.
 Tray Icon floats in it's own window. Need to use xwayland.
 The issue where Settings Tab closes itself seems fixed.
 
 Epic Games Launcher with wine-wayland just renders the window, nothing else after login.
-Seems like it cant connect to some Services? Tray Icon floats in it's own window. Need to use xwayland.
+Seems like it cant connect to some Services?
+Tray Icon floats in it's own window.
+Need to use xwayland.
 
 EA App with wine-wayland works. But i had to do the login with xwayland.
 After autologin is enabled i can reenable wine-wayland.
@@ -16,7 +20,8 @@ Tray Icon floats in it's own window.
 Eve Online with wine-wayland doesnt show the launcher window.
 --in-process-gpu works. Tray Icon floats in it's own window.
 
-Guild Wars 2 Launcher with wine-wayland has some issues on launcher with transparency (maybe the same issue with ea-app burger menu?), but doesnt affect functionality.
+Guild Wars 2 Launcher with wine-wayland has some issues on launcher with transparency
+(maybe the same issue with ea-app burger menu?), but doesnt affect functionality.
 --in-process-gpu doesnt help. Seems this launcher doesnt have a Trayicon.
 
 Elders Scrolls Online Launcher works ok with wine-wayland. It often closes itself.
