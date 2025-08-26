@@ -65,3 +65,11 @@ On first launch i had to use xwayland to press all the buttons and load the game
 After that i was able to enable wine-wayland, which resulted in the launcher rendered black.
 But since i dont have to press any buttons and just wait, it launched the game.
 Tray Icon floats in it's own window.
+
+---
+
+The Witcher 2 Launcher with wine-wayland renders black. --in-process-gpu works.
+Buttons dont work, they dont register hover or click.
+only the bottom 3 buttons (which are opening links)  and the close X works.
+Seems this launcher doesnt have a Trayicon.
+Can play the Game fine with wine-wayland if i select the witcher2.exe in bin folder.
