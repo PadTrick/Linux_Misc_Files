@@ -73,3 +73,8 @@ Buttons dont work, they dont register hover or click.
 only the bottom 3 buttons (which are opening links)  and the close X works.
 Seems this launcher doesnt have a Trayicon.
 Can play the Game fine with wine-wayland if i select the witcher2.exe in bin folder.
+
+---
+
+The Witcher 3 Launcher with wine-wayland works good.
+Couldnt find any issues. Seems this launcher doesnt have a Trayicon.
