@@ -212,7 +212,7 @@ sudo pacman -S reflector pacman-contrib --noconfirm
 sudo pacman -Syu
 
 #Discover missing dependencies
-sudo pacman -S packagekit-qt5 flatpak fwupd --noconfirm
+sudo pacman -S packagekit-qt6 flatpak fwupd --noconfirm
 
 #Installing Fonts
 WORKING_DIR=$(pwd)
