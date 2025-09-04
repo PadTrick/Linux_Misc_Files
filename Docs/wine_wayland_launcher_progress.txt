@@ -78,3 +78,10 @@ Can play the Game fine with wine-wayland if i select the witcher2.exe in bin fol
 
 The Witcher 3 Launcher with wine-wayland works good.
 Couldnt find any issues. Seems this launcher doesnt have a Trayicon.
+
+---
+
+Black Desert Launcher with wine-wayland renders black. --in-process-gpu doesnt help.
+Needed to use xwayland to select Region, check "Autostart Game" and start it once with xwayland.
+After that i could enable wine-wayland again. Launcher still renders black and autostart doesnt seems to work.
+But i was able to guess the position of the Start Button and play it.
