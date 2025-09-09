@@ -212,7 +212,7 @@ sudo pacman -S reflector pacman-contrib --noconfirm
 sudo pacman -Syu
 
 #Discover missing dependencies
-sudo pacman -S packagekit-qt6 flatpak fwupd --noconfirm
+sudo pacman -S flatpak fwupd --noconfirm
 
 #Installing Fonts
 WORKING_DIR=$(pwd)
@@ -398,6 +398,51 @@ do
         *) echo "invalid option $REPLY";;
     esac
 done
+
+clear
+#Wayland
+echo -e "Install xwayland and xwaylandvideobridge ?"
+PS7='Select: '
+opt7=("Yes" "No")
+select opt7 in "${opt7[@]}"
+do
+    case $opt7 in
+        "Yes")
+            echo "you choose Yes"
+            INSTALL_XWAYLAND="Yes"
+            break
+            ;;
+        "No")
+            echo "you choose No"
+            INSTALL_XWAYLAND="No"
+            break
+            ;;
+        *) echo "invalid option $REPLY";;
+    esac
+done
+
+clear
+#Master PDF Editor FREE
+echo -e "Install Master PDF Editor FREE ?"
+PS9='Select: '
+opt9=("Yes" "No")
+select opt9 in "${opt9[@]}"
+do
+    case $opt9 in
+        "Yes")
+            echo "you choose Yes"
+            INSTALL_MASTERPDFEDITOR="Yes"
+            break
+            ;;
+        "No")
+            echo "you choose No"
+            INSTALL_MASTERPDFEDITOR="No"
+            break
+            ;;
+        *) echo "invalid option $REPLY";;
+    esac
+done
+
 clear
 #Gamescope
 echo -e "Install Gamescope-GIT ?"
@@ -419,6 +464,7 @@ do
         *) echo "invalid option $REPLY";;
     esac
 done
+
 clear
 #Visual Studio Code
 echo -e "Install Visual Studio Code ?"
@@ -440,6 +486,7 @@ do
         *) echo "invalid option $REPLY";;
     esac
 done
+
 clear
 #OBS Studio Git
 echo -e "Install OBS Studio Git ?"
@@ -456,28 +503,6 @@ do
         "No")
             echo "you choose No"
             INSTALL_OBS="No"
-            break
-            ;;
-        *) echo "invalid option $REPLY";;
-    esac
-done
-
-clear
-#Wayland
-echo -e "Install xwayland and xwaylandvideobridge ?"
-PS7='Select: '
-opt7=("Yes" "No")
-select opt7 in "${opt7[@]}"
-do
-    case $opt7 in
-        "Yes")
-            echo "you choose Yes"
-            INSTALL_XWAYLAND="Yes"
-            break
-            ;;
-        "No")
-            echo "you choose No"
-            INSTALL_XWAYLAND="No"
             break
             ;;
         *) echo "invalid option $REPLY";;
@@ -507,13 +532,13 @@ do
 done
 #summary
 clear
-echo "XBox Driver = $XBOX_DRIVER | JP Fonts = $JP_FONT | Firmware = $INSTALL_FIRMWARE | Gamescope Plus = $INSTALL_GAMESCOPE | Visual Studio Code = $INSTALL_VSC | OBS Studio Git = $INSTALL_OBS | XWayland = $INSTALL_XWAYLAND | Piper-GIT = $INSTALL_PIPER_GIT"
+echo "XBox Driver = $XBOX_DRIVER | JP Fonts = $JP_FONT | Firmware = $INSTALL_FIRMWARE | XWayland = $INSTALL_XWAYLAND | Master PDF Editor = $INSTALL_MASTERPDFEDITOR | Gamescope Plus = $INSTALL_GAMESCOPE | Visual Studio Code = $INSTALL_VSC | OBS Studio Git = $INSTALL_OBS | Piper-GIT = $INSTALL_PIPER_GIT"
 echo ""
-PS9='Select: '
-opt9=("Continue")
-select opt9 in "${opt9[@]}"
+PS10='Select: '
+opt10=("Continue")
+select opt10 in "${opt10[@]}"
 do
-    case $opt9 in
+    case $opt10 in
         "Continue")
             echo "you choose Continue"
             break
@@ -535,6 +560,11 @@ fi
 if [ "$INSTALL_OBS" == "Yes" ]; then
     echo "Installing OBS Studio Git"
     yay -S obs-studio-git --noconfirm
+fi
+
+if [ "$INSTALL_MASTERPDFEDITOR" == "Yes" ]; then
+    echo "Installing Master PDF Editor FREE"
+    yay -S masterpdfeditor-free --noconfirm
 fi
 
 if [ "$INSTALL_XWAYLAND" == "Yes" ]; then
