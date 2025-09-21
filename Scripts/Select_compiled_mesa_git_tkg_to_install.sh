@@ -11,7 +11,7 @@ while IFS= read -r line; do
     date=$(echo "$line" | awk '{print $(NF-3) " " $(NF-2) " " $(NF-1)}')
     filename=$(echo "$line" | awk '{print $NF}')
     if [[ "$filename" == mesa-tkg-git-*.pkg.tar.zst ]]; then
-        shortname=$(echo "$filename" | sed -E 's/mesa-tkg-git-[^-]+_devel\.([0-9]+\.[a-f0-9]+)-.*\.pkg\.tar\.zst/mesa \1/')
+        shortname=$(echo "$filename" | sed -E 's/mesa-tkg-git-([0-9]+\.[0-9]+\.[0-9]+)\.[0-9]+\.[a-f0-9]+-.*\.pkg\.tar\.zst/mesa \1/' | sed -E 's/mesa-tkg-git-[^-]+_devel\.([0-9]+\.[a-f0-9]+)-.*\.pkg\.tar\.zst/mesa git \1/')
         packages[$i]="$filename"
         echo "$i) $shortname ($date)"
         ((i++))
@@ -39,7 +39,18 @@ if [[ ! -f "$lib32_pkg" ]]; then
     exit 1
 fi
 
+echo "Erzwinge Deinstallation der konfliktierenden Pakete..."
+# Force remove der problematischen Pakete
+sudo pacman -Rdd vulkan-mesa-device-select lib32-vulkan-mesa-device-select --noconfirm 2>/dev/null || true
+
+# Lösche die konfliktierenden Dateien manuell falls nötig
+sudo rm -f /usr/lib/libVkLayer_MESA_device_select.so 2>/dev/null || true
+sudo rm -f /usr/share/vulkan/implicit_layer.d/VkLayer_MESA_device_select.json 2>/dev/null || true
+sudo rm -f /usr/lib32/libVkLayer_MESA_device_select.so 2>/dev/null || true
+
 # Installation beider Pakete
+echo "Installiere mesa-tkg-git Pakete..."
 sudo pacman -U "./$selected_pkg" "./$lib32_pkg"
+sudo pacman -S opengl-man-pages --noconfirm
 
 echo "Finished!!!"

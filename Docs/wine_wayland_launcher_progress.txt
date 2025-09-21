@@ -85,3 +85,8 @@ Black Desert Launcher with wine-wayland renders black. --in-process-gpu doesnt h
 Needed to use xwayland to select Region, check "Autostart Game" and start it once with xwayland.
 After that i could enable wine-wayland again. Launcher still renders black and autostart doesnt seems to work.
 But i was able to guess the position of the Start Button and play it.
+
+---
+
+Secret Worlds Legends works good with wine-wayland. There are some issues on launcher with transparency
+and the launcher window cant be dragged around. It can be moved between displays (SUPER + SHIFT + LEFT/RIGHT).
