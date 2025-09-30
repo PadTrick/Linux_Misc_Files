@@ -90,3 +90,9 @@ But i was able to guess the position of the Start Button and play it.
 
 Secret Worlds Legends works good with wine-wayland. There are some issues on launcher with transparency
 and the launcher window cant be dragged around. It can be moved between displays (SUPER + SHIFT + LEFT/RIGHT).
+
+---
+
+Elite Dangerous Launcher works not that good with wine-wayland. It renders all, but it looks like
+as if it doesnt refreshs the progress of the launcher correctly. i sometimes need to press where
+a butt would be, before it actually shows it. But it works and i can get ingame.
