@@ -207,7 +207,7 @@ echo "Installing ..."
 #Check Mirrors of France & Germany, select fastest 5 of these and write them into the mirrorlist
 #currently disabled
 sudo pacman -S reflector pacman-contrib --noconfirm
-#sudo reflector --save /etc/pacman.d/mirrorlist --country Germany --protocol https --latest 10
+#sudo reflector --save /etc/pacman.d/mirrorlist --sort rate --country Germany --protocol https --latest 10
 
 sudo pacman -Syu
 

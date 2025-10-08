@@ -47,3 +47,11 @@ iwctl device list
 iwctl station YOURDEVICE scan
 iwctl station YOURDEVICE get-networks
 iwctl --passphrase=PASSPHRASE station YOURDEVICE connect SSID
+
+========================================
+
+Slow Downloadspeed on Installation:
+
+run
+systemctl mask reflector.service
+before starting archinstall
