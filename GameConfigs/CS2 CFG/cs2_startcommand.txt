@@ -1,5 +1,5 @@
 #Currently using this on Archlinux KDE Wayland to play 4:3 stretch
-SDL_VIDEO_DRIVER=wayland gamemoderun mangohud %command% -fullscreen -w 1280 -h 960 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
+SDL_VIDEO_DRIVER=wayland gamemoderun mangohud %command% -fullscreen_windowed -w 1280 -h 960 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
 
 #Gamescope v 3.14.29+ |  16:9 strech | Wayland | Gamescope currenty doesnt work correctly with Wayland. Without force-grab-curser a Mousecursor is at top left corner, but you control a invisible one. with that command the cursor doesnt disappear when it should, it also doesnt behave correctly ingame
 gamemoderun gamescope -w 1280 -h 720 -r 240 -S stretch -f --expose-wayland --mangoapp --force-grab-cursor -- %command% -vulkan -fullscreen -w 1280 -h 720 -refresh 240 -console -novid -language english -threads 8 -nojoy -high

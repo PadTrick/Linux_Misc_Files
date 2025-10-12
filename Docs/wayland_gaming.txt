@@ -13,3 +13,5 @@ export SDL_VIDEO_DRIVER=x11
 to
 export SDL_VIDEO_DRIVER=wayland
 
+#If mousesensitivity is to high, use that as start command
+WAYLANDDRV_RAWINPUT=0.5
