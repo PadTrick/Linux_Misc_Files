@@ -25,7 +25,7 @@ echo -e "Choose your packages to install \n"
 #GPU Drivers
 echo -e "Which GPU Drivers ?"
 PS1='Select: '
-opt1=("NVIDIA" "AMD" "INTEL" "Hyper-V")
+opt1=("NVIDIA" "AMD" "INTEL" "Hyper-V" "None")
 select opt1 in "${opt1[@]}"
 do
     case $opt1 in
@@ -47,6 +47,11 @@ do
         "Hyper-V")
             echo "you choose Hyper-V"
             GPU_DRIVER="Hyper-V"
+            break
+            ;;
+        "None")
+            echo "you choose None"
+            GPU_DRIVER=""
             break
             ;;
         *) echo "invalid option $REPLY";;
@@ -236,7 +241,7 @@ fi
 
 if [ "$GPU_DRIVER" == "INTEL" ]; then
     echo "Installing INTEL Drivers"
-    sudo pacman -S mesa lib32-mesa vulkan-intel lib32-vulkan-intel intel-media-driver linux-firmware intel-graphics-compiler intel-compute-runtime vulkan-headers vulkan-validation-layers vulkan-tools libva-intel-driver libvdpau-va-gl libva-utils intel-ucode directx-headers mesa-vdpau lib32-mesa-vdpau libva-mesa-driver lib32-libva-mesa-driver vulkan-mesa-layers lib32-vulkan-mesa-layers --noconfirm
+    sudo pacman -S intel-graphics-compiler intel-compute-runtime mesa lib32-mesa vulkan-headers vulkan-validation-layers vulkan-tools libva-intel-driver libvdpau-va-gl libva-utils intel-ucode intel-media-driver linux-firmware directx-headers mesa-vdpau lib32-mesa-vdpau libva-mesa-driver lib32-libva-mesa-driver vulkan-mesa-layers lib32-vulkan-mesa-layers vulkan-driver lib32-vulkan-driver vulkan-mesa-device-select lib32-vulkan-mesa-device-select --noconfirm
 fi
 
 if [ "$GPU_DRIVER" == "Hyper-V" ]; then
