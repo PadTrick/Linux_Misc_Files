@@ -231,7 +231,7 @@ sudo pacman -S noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-dejavu ttf-liberat
 
 if [ "$GPU_DRIVER" == "NVIDIA" ]; then
     echo "Installing NVIDIA Drivers"
-    #sudo pacman -S vulkan-icd-loader lib32-vulkan-icd-loader nvidia-utils lib32-nvidia-utils nvidia-settings lib32-opencl-nvidia opencl-nvidia --noconfirm
+    sudo pacman -S vulkan-icd-loader lib32-vulkan-icd-loader nvidia-utils lib32-nvidia-utils nvidia-settings lib32-opencl-nvidia opencl-nvidia --noconfirm
 fi
 
 if [ "$GPU_DRIVER" == "AMD" ]; then
