@@ -1,4 +1,5 @@
 #!/bin/bash
+sudo pacman -Syu
 clear
 echo -e "Setting keymap \n"
 sudo localectl --no-convert set-keymap de-latin1-nodeadkeys
