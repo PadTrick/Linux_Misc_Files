@@ -6,7 +6,7 @@ WM: KWin (Wayland)
 CPU: AMD Ryzen 7 5800X (16) @ 4.85 GHz
 GPU: Intel Arc A770 @ 2.40 GHz [Discrete]
 DRIVER: Mesa 25.2.1
-PROTON: Proton-EM-10.0-2D
+PROTON: Proton-EM-10.0-2D, ProtonGE10-21
 
 ---
 
@@ -65,6 +65,7 @@ On first launch i had to use xwayland to press all the buttons and load the game
 After that i was able to enable wine-wayland, which resulted in the launcher rendered black.
 But since i dont have to press any buttons and just wait, it launched the game.
 Tray Icon floats in it's own window.
+Borked with GE10-21
 
 ---
 
@@ -85,6 +86,7 @@ Black Desert Launcher with wine-wayland renders black. --in-process-gpu doesnt h
 Needed to use xwayland to select Region, check "Autostart Game" and start it once with xwayland.
 After that i could enable wine-wayland again. Launcher still renders black and autostart doesnt seems to work.
 But i was able to guess the position of the Start Button and play it.
+Seems to be fixed with GE10-21
 
 ---
 
@@ -95,4 +97,5 @@ and the launcher window cant be dragged around. It can be moved between displays
 
 Elite Dangerous Launcher works not that good with wine-wayland. It renders all, but it looks like
 as if it doesnt refreshs the progress of the launcher correctly. i sometimes need to press where
-a butt would be, before it actually shows it. But it works and i can get ingame.
+a button would be, before it actually shows it. But it works and i can get ingame.
+Seems to be fixed with GE10-21
