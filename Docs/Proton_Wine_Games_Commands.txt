@@ -1,3 +1,6 @@
+#If Gamemode not working correctly, try
+LD_PRELOAD="/usr/\$LIB/libgamemodeauto.so.0${LD_PRELOAD:+:$LD_PRELOAD}" mangohud %command%
+
 #If some Game Launcher is rendered black try using --in-process-gpu
 gamemoderun mangohud %command% --in-process-gpu
 
