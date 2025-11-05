@@ -9,7 +9,7 @@ gamemoderun mangohud %command% --in-process-gpu
 #Intel ARC
 #Default works for most Games
 gamemoderun mangohud %command%
-gamemoderun MANGOHUD_CONFIG="fps_limit=60,no_display" mangohud %command%
+gamemoderun MANGOHUD_CONFIG="fps_limit=60,no_display" mangohud %command% # maybe consider adding "fps_limit=60" to a seperate config file and use MANGOHUD_CONFIGFILE=~/.config/MangoHud/fps_limit.conf mangohud %command%
 
 #Sea of Thieves
 #if Microsoft Account Login Windows is black
