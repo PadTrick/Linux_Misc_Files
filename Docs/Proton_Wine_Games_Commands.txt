@@ -1,3 +1,6 @@
+#For debugging keyboard layout
+PROTON_LOG=+key,+keyboard
+
 #If Gamemode is not working correctly if launched through steam with gamemoderun, try
 LD_PRELOAD="/usr/\$LIB/libgamemodeauto.so.0${LD_PRELOAD:+:$LD_PRELOAD}" mangohud %command%
 

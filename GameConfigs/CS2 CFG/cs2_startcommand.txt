@@ -1,5 +1,6 @@
 #Currently using this on Archlinux KDE Wayland to play 4:3 stretched
 SDL_VIDEO_DRIVER=wayland gamemoderun mangohud %command% -fullscreen_windowed -w 1280 -h 960 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
+SDL_VIDEO_DRIVER=wayland LD_PRELOAD="/usr/\$LIB/libgamemodeauto.so.0${LD_PRELOAD:+:$LD_PRELOAD}" mangohud %command% -fullscreen_windowed -w 1280 -h 960 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
 
 # If you experience audio issues like cutouts, try adding "-audiodriver alsa -sdlaudiodriver" at the end.
 # I only had this issue while using PulseAudio; it disappeared after switching to PipeWire.
