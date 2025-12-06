@@ -1,0 +1,149 @@
+After Installing Archlinux:
+
+
+#Enable Color, Pacman progress and lib32 support.
+Edit /etc/pacman.conf and change "#Color" to "Color", add "ILoveCandy" below it. Change "#ParallelDownloads = 5" to "ParallelDownloads = 5". Scroll to the bottom and find
+"#[multilib]
+#Include = /etc/pacman.d/mirrorlist"
+and remove the "#" at the front to look like this
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+
+after that save it.
+
+
+#Disable debug package build.
+Now edit /etc/makepkg.conf and find the lines
+DEBUG_CFLAGS="-g"
+DEBUG_CXXFLAGS="$DEBUG_CFLAGS"
+and put a # infront
+#DEBUG_CFLAGS="-g"
+#DEBUG_CXXFLAGS="$DEBUG_CFLAGS"
+then find the line "OPTIONS=(strip docs !libtool !staticlibs emptydirs zipman purge debug lto)"
+and put a ! infront of debug
+OPTIONS=(strip docs !libtool !staticlibs emptydirs zipman purge !debug lto)
+
+after that save it.
+
+
+#Increase shadercache size for your GPU
+Edit /etc/environment depending on your GPU add one of the following blocks.
+
+#This block is for NVIDIA
+# The following commands are for NVIDIA GPUs like my old GTX 1070Ti etc.
+__GL_SHADER_DISK_CACHE=1
+__GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1
+__GL_SHADER_DISK_CACHE_SIZE=100000000000
+#__GL_SHADER_DISK_CACHE_PATH=/var/cache/shaders
+
+# Enable threaded optomisation for OpenGL.
+__GL_THREADED_OPTIMIZATION=1
+
+
+#This Block is for AMD & Intel GPUs
+# The following commands are for Mesa (AMD/Intel)
+MESA_SHADER_CACHE_DISABLE=false
+MESA_SHADER_CACHE_MAX_SIZE=100G
+
+after that save it.
+
+
+#Settings and Installing packages.
+#Simply execute the following commands in your terminal.
+
+sudo localectl --no-convert set-keymap de-latin1-nodeadkeys
+sudo localectl --no-convert set-x11-keymap de pc105 deadgraveacute
+
+sudo pacman -S reflector pacman-contrib
+
+#Check Mirrors of Germany, select fastest 10 of these and write them into the mirrorlist. It is only needed if downloadspeed is low.
+sudo reflector --save /etc/pacman.d/mirrorlist --sort rate --country Germany --protocol https --latest 10
+
+sudo pacman -Syu
+
+#Discover missing dependencies
+sudo pacman -S flatpak fwupd
+
+#If you want more fonts, clone the following Repo "https://github.com/PadTrick/Linux_Misc_Files.git" and run "Linux_Misc_Files/Fonts/Copy_Fonts_archlinux.sh" (after making this script executable).
+
+#If you dont run the script above, here are some of the Fonts.
+sudo pacman -S noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-dejavu ttf-liberation ttf-opensans
+
+#GPU Drivers, select your Vendor
+
+#NVIDIA closed source driver.
+sudo pacman -S vulkan-icd-loader lib32-vulkan-icd-loader nvidia-utils lib32-nvidia-utils nvidia-settings lib32-opencl-nvidia opencl-nvidia
+
+#AMD
+sudo pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon vulkan-radeon lib32-vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau
+
+#Intel Arc
+sudo pacman -S intel-graphics-compiler intel-compute-runtime mesa lib32-mesa vulkan-headers vulkan-validation-layers vulkan-tools libva-intel-driver libvdpau-va-gl libva-utils intel-ucode intel-media-driver linux-firmware directx-headers libva-mesa-driver lib32-libva-mesa-driver vulkan-mesa-layers lib32-vulkan-mesa-layers vulkan-driver lib32-vulkan-driver vulkan-mesa-implicit-layers lib32-vulkan-mesa-implicit-layers
+
+#Hyper-V
+sudo pacman -S xf86-video-fbdev
+
+#Some missing firmware packages
+sudo pacman -S linux-firmware-qlogic
+
+#Some libs & tools which will be usefull for extracting several archive formats, installing packages from AUR or mounting NTFS drivers, screenshots etc
+sudo pacman -S gnome-keyring ntfs-3g dkms linux-lts-headers linux-zen-headers cabextract  curl  glib2  gnome-desktop  gtk3  mesa-utils  unrar p7zip  psmisc  python-dbus  python-distro  python-evdev  python-gobject  python-lxml  python-pillow python-pip python-lxml git fuse2 gawk polkit-kde-agent jre17-openjdk pavucontrol kwalletmanager partitionmanager fastfetch gwenview kcalc qt5-imageformats qt6-imageformats btop vi less exfatprogs dosfstools
+
+#Screenshot utility for KDE
+sudo pacman -S spectacle
+
+#utility to manage cpu frequency etc.
+sudo pacman -S cpupower
+
+#changing governor to ondemand
+Edit "/etc/default/cpupower" and change #governor='ondemand' to governor='ondemand'
+
+#media player
+sudo pacman -S vlc vlc-plugins-all vlc-plugins-base vlc-plugins-extra
+
+#browsers
+sudo pacman -S vivaldi
+
+#gaming overlay
+sudo pacman -S mangohud lib32-mangohud
+
+#Wine and dependencies
+sudo pacman -S wine-staging winetricks
+sudo pacman -S giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox
+
+#steam, lutris, gamescope and gamemode
+sudo pacman -S steam gamescope gamemode lib32-gamemode lutris
+
+#Packages for Diablo 1 DevilutionX Port
+sudo pacman -S fmt lib32-sdl2 lib32-sdl2_image lib32-sdl2_mixer lib32-sdl2_ttf sdl2 sdl2_image sdl2_mixer sdl2_ttf
+
+#Mouse tools, choose one of the to if you need them
+"sudo pacman -S solaar" or "sudo pacman -S piper"
+
+#some audio stuff
+sudo pacman -S paprefs qpwgraph wireplumber
+
+#Basic setup is now finished. We still need some packages from the AUR (https://aur.archlinux.org).
+#Warning: Dont trust the packages blindly, they are made by normal users. Always check them.
+#To make it easier to use AUR, we install a small helper called "yay".
+
+git clone https://aur.archlinux.org/yay.git
+cd yay && makepkg -si
+
+#After installing we can now install packages from AUR as easy as normal packages with pacman.
+
+yay -S xorg-xwayland xwaylandvideobridge
+
+#Xbox one gamepad with dongle firmware
+yay -S xone-dkms-git xone-dongle-firmware
+
+#Some firmwares
+yay -S ast-fw aic94xx-firmware wd719x-firmware upd72020x-fw
+
+#Some usesfull packages
+yay -S mangojuice downgrade protontricks-git protonup-qt heroic-games-launcher-bin vkbasalt lib32-vkbasalt vesktop-bin
+
+#Google Chrome Flatpak. You can skip that if you dont want it.
+flatpak install flathub com.google.Chrome
+#Allow Google Chrome to access local Files
+flatpak override --user --filesystem=home com.google.Chrome
