@@ -1,4 +1,13 @@
 #!/bin/bash
+sudo cp /etc/pacman.conf /etc/pacman.conf.bak
+sudo sed -i 's/^#Color$/Color/' /etc/pacman.conf
+if ! grep -q "^ILoveCandy" /etc/pacman.conf; then
+    sudo sed -i '/^Color$/a ILoveCandy' /etc/pacman.conf
+fi
+sudo sed -i 's/^#ParallelDownloads = 5$/ParallelDownloads = 5/' /etc/pacman.conf
+sudo sed -i 's/^#\[multilib\]$/\[multilib\]/' /etc/pacman.conf
+sudo sed -i '/^\[multilib\]$/{n;s/^#Include = \/etc\/pacman.d\/mirrorlist$/Include = \/etc\/pacman.d\/mirrorlist/}' /etc/pacman.conf
+
 sudo pacman -Syu
 clear
 echo -e "Setting keymap \n"
