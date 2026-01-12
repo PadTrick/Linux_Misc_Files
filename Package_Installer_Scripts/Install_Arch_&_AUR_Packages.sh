@@ -35,13 +35,18 @@ echo -e "Choose your packages to install \n"
 #GPU Drivers
 echo -e "Which GPU Drivers ?"
 PS1='Select: '
-opt1=("NVIDIA" "AMD" "INTEL" "Hyper-V" "None")
+opt1=("NVIDIA" "NVIDIA_LEGACY" "AMD" "INTEL" "Hyper-V" "None")
 select opt1 in "${opt1[@]}"
 do
     case $opt1 in
-        "NVIDIA")
+        "NVIDIA (1650/20xx Series and newer)")
             echo "you choose NVIDIA"
             GPU_DRIVER="NVIDIA"
+            break
+            ;;
+        "NVIDIA_LEGACY (10xx Series and older)")
+            echo "you choose NVIDIA_LEGACY"
+            GPU_DRIVER="NVIDIA_LEGACY"
             break
             ;;
         "AMD")
@@ -226,6 +231,23 @@ sudo pacman -S reflector pacman-contrib --noconfirm
 
 sudo pacman -Syu
 
+#installing yay
+sudo pacman -S git
+
+WORKING_DIR=$(pwd)
+#Yet another yogurt. Pacman wrapper and AUR helper.
+echo "Installing yay"
+echo "creating dir $HOME/git and cloning all packages into it"
+mkdir $HOME/git
+cd $HOME/git
+echo "cloning yay to $HOME/git"
+git clone https://aur.archlinux.org/yay.git
+echo "Installing yay"
+cd yay && makepkg -si
+cd $HOME/git
+echo "yay installed !!!"
+clear
+
 #Discover missing dependencies
 sudo pacman -S flatpak fwupd --noconfirm
 
@@ -242,6 +264,11 @@ sudo pacman -S noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-dejavu ttf-liberat
 if [ "$GPU_DRIVER" == "NVIDIA" ]; then
     echo "Installing NVIDIA Drivers"
     sudo pacman -S vulkan-icd-loader lib32-vulkan-icd-loader nvidia-utils lib32-nvidia-utils nvidia-settings lib32-opencl-nvidia opencl-nvidia
+fi
+
+if [ "$GPU_DRIVER" == "NVIDIA" ]; then
+    echo "Installing NVIDIA Drivers"
+    yay -S vulkan-icd-loader lib32-vulkan-icd-loader nvidia-580xx-utils lib32-nvidia-580xx-utils nvidia-580xx-settings nvidia-580xx-dkms libxnvctrl-580xx lib32-opencl-nvidia-580xx opencl-nvidia-580xx
 fi
 
 if [ "$GPU_DRIVER" == "AMD" ]; then
@@ -263,7 +290,7 @@ fi
 sudo pacman -S linux-firmware-qlogic --noconfirm
 
 #Some libs & tools which will be usefull for extracting several archive formats, installing packages from AUR or mounting NTFS drivers, screenshots etc
-sudo pacman -S gnome-keyring ntfs-3g dkms linux-lts-headers linux-zen-headers cabextract  curl  glib2  gnome-desktop  gtk3  mesa-utils  unrar p7zip  psmisc  python-dbus  python-distro  python-evdev  python-gobject  python-lxml  python-pillow python-pip python-lxml git fuse2 gawk polkit-kde-agent jre17-openjdk pavucontrol kwalletmanager partitionmanager fastfetch gwenview kcalc qt5-imageformats qt6-imageformats btop vi less exfatprogs dosfstools --noconfirm
+sudo pacman -S gnome-keyring ntfs-3g dkms linux-lts-headers linux-zen-headers cabextract  curl  glib2  gnome-desktop  gtk3  mesa-utils  unrar p7zip  psmisc  python-dbus  python-distro  python-evdev  python-gobject  python-lxml  python-pillow python-pip python-lxml fuse2 gawk polkit-kde-agent jre17-openjdk pavucontrol kwalletmanager partitionmanager fastfetch gwenview kcalc qt5-imageformats qt6-imageformats btop vi less exfatprogs dosfstools --noconfirm
 
 #Screenshot utility for KDE
 sudo pacman -S spectacle --noconfirm
@@ -291,8 +318,8 @@ sudo pacman -S mangohud lib32-mangohud --noconfirm
 sudo pacman -S wine-staging winetricks --noconfirm
 sudo pacman -S giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox --noconfirm
 
-#steam, lutris, gamescope and gamemode
-sudo pacman -S steam gamescope gamemode lib32-gamemode lutris
+#lutris, gamescope and gamemode
+sudo pacman -S gamescope gamemode lib32-gamemode lutris
 
 #Packages for Diablo 1 DevilutionX Port
 sudo pacman -S fmt lib32-sdl2 lib32-sdl2_image lib32-sdl2_mixer lib32-sdl2_ttf sdl2 sdl2_image sdl2_mixer sdl2_ttf --noconfirm
@@ -337,20 +364,7 @@ if [ "$BARRIER_PACKAGE" == "Yes" ]; then
     sudo pacman -S barrier --noconfirm
 fi
 
-#!/bin/bash
-WORKING_DIR=$(pwd)
-#Yet another yogurt. Pacman wrapper and AUR helper.
-echo "Installing yay"
-echo "creating dir $HOME/git and cloning all packages into it"
-mkdir $HOME/git
-cd $HOME/git
-echo "cloning yay to $HOME/git"
-git clone https://aur.archlinux.org/yay.git
-echo "Installing yay"
-cd yay && makepkg -si
-cd $HOME/git
-echo "yay installed !!!"
-clear
+
 #XBOX Drivers
 echo -e "Install Xbox One Wireless Gamepad Driver ?"
 PS2='Select: '
@@ -545,6 +559,29 @@ do
         *) echo "invalid option $REPLY";;
     esac
 done
+
+clear
+#nvidia legacy driver
+echo -e "Install NVIDIA Legacy 580.xx Driver ?"
+PS9='Select: '
+opt9=("Yes" "No")
+select opt9 in "${opt9[@]}"
+do
+    case $opt9 in
+        "Yes")
+            echo "you choose Yes"
+            INSTALL_NVIDIA_LEGACY="Yes"
+            break
+            ;;
+        "No")
+            echo "you choose No"
+            INSTALL_NVIDIA_LEGACY="No"
+            break
+            ;;
+        *) echo "invalid option $REPLY";;
+    esac
+done
+
 #summary
 clear
 echo "XBox Driver = $XBOX_DRIVER | JP Fonts = $JP_FONT | Firmware = $INSTALL_FIRMWARE | XWayland = $INSTALL_XWAYLAND | Master PDF Editor = $INSTALL_MASTERPDFEDITOR | Gamescope Plus = $INSTALL_GAMESCOPE | Visual Studio Code = $INSTALL_VSC | OBS Studio Git = $INSTALL_OBS | Piper-GIT = $INSTALL_PIPER_GIT"
@@ -566,6 +603,8 @@ echo "Installing ..."
 
 sudo pacman -Syu
 yay -Syyu
+
+sudo pacman -S steam
 
 if [ "$INSTALL_VSC" == "Yes" ]; then
     echo "Installing Visual Studio Code"
