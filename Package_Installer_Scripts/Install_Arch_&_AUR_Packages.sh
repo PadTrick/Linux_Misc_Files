@@ -266,7 +266,7 @@ if [ "$GPU_DRIVER" == "NVIDIA" ]; then
     sudo pacman -S vulkan-icd-loader lib32-vulkan-icd-loader nvidia-utils lib32-nvidia-utils nvidia-settings lib32-opencl-nvidia opencl-nvidia
 fi
 
-if [ "$GPU_DRIVER" == "NVIDIA" ]; then
+if [ "$GPU_DRIVER" == "NVIDIA_LEGACY" ]; then
     echo "Installing NVIDIA Drivers"
     yay -S vulkan-icd-loader lib32-vulkan-icd-loader nvidia-580xx-utils lib32-nvidia-580xx-utils nvidia-580xx-settings nvidia-580xx-dkms libxnvctrl-580xx lib32-opencl-nvidia-580xx opencl-nvidia-580xx
 fi
