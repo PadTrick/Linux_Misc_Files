@@ -1,4 +1,5 @@
 #!/bin/bash
+WORKING_DIR=$(pwd)
 sudo cp /etc/pacman.conf /etc/pacman.conf.bak
 sudo sed -i 's/^#Color$/Color/' /etc/pacman.conf
 if ! grep -q "^ILoveCandy" /etc/pacman.conf; then
@@ -35,7 +36,7 @@ echo -e "Choose your packages to install \n"
 #GPU Drivers
 echo -e "Which GPU Drivers ?"
 PS1='Select: '
-opt1=("NVIDIA" "NVIDIA_LEGACY" "AMD" "INTEL" "Hyper-V" "None")
+opt1=("NVIDIA (1650/20xx Series and newer)" "NVIDIA_LEGACY (10xx Series and older)" "AMD" "INTEL" "Hyper-V" "None")
 select opt1 in "${opt1[@]}"
 do
     case $opt1 in
@@ -79,7 +80,7 @@ PS2='Select: '
 opt2=("Solaar" "Piper" "None")
 select opt2 in "${opt2[@]}"
 do
-    case $opt2 in
+    case $opt2 inWORKING_DIR=$(pwd)
         "Solaar")
             echo "you choose Solaar"
             MOUSE_DRIVER="Solaar"
@@ -252,7 +253,7 @@ clear
 sudo pacman -S flatpak fwupd --noconfirm
 
 #Installing Fonts
-WORKING_DIR=$(pwd)
+#WORKING_DIR=$(pwd)
 sudo mkdir /usr/local/share/fonts
 sudo mkdir /usr/local/share/fonts/otf
 sudo mkdir /usr/local/share/fonts/ttf
@@ -268,6 +269,7 @@ fi
 
 if [ "$GPU_DRIVER" == "NVIDIA_LEGACY" ]; then
     echo "Installing NVIDIA Drivers"
+    sudo pacman -Rns egl-gbm egl-wayland egl-wayland2 egl-x11 libva-nvidia-driver nvidia-open-dkms nvidia-utils
     yay -S vulkan-icd-loader lib32-vulkan-icd-loader nvidia-580xx-utils lib32-nvidia-580xx-utils nvidia-580xx-settings nvidia-580xx-dkms libxnvctrl-580xx lib32-opencl-nvidia-580xx opencl-nvidia-580xx
 fi
 
