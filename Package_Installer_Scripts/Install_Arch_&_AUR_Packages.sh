@@ -562,28 +562,6 @@ do
     esac
 done
 
-clear
-#nvidia legacy driver
-echo -e "Install NVIDIA Legacy 580.xx Driver ?"
-PS9='Select: '
-opt9=("Yes" "No")
-select opt9 in "${opt9[@]}"
-do
-    case $opt9 in
-        "Yes")
-            echo "you choose Yes"
-            INSTALL_NVIDIA_LEGACY="Yes"
-            break
-            ;;
-        "No")
-            echo "you choose No"
-            INSTALL_NVIDIA_LEGACY="No"
-            break
-            ;;
-        *) echo "invalid option $REPLY";;
-    esac
-done
-
 #summary
 clear
 echo "XBox Driver = $XBOX_DRIVER | JP Fonts = $JP_FONT | Firmware = $INSTALL_FIRMWARE | XWayland = $INSTALL_XWAYLAND | Master PDF Editor = $INSTALL_MASTERPDFEDITOR | Gamescope Plus = $INSTALL_GAMESCOPE | Visual Studio Code = $INSTALL_VSC | OBS Studio Git = $INSTALL_OBS | Piper-GIT = $INSTALL_PIPER_GIT"
