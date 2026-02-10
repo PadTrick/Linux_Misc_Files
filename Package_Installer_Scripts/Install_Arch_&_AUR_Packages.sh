@@ -80,7 +80,7 @@ PS2='Select: '
 opt2=("Solaar" "Piper" "None")
 select opt2 in "${opt2[@]}"
 do
-    case $opt2 inWORKING_DIR=$(pwd)
+    case $opt2 in
         "Solaar")
             echo "you choose Solaar"
             MOUSE_DRIVER="Solaar"
