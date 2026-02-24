@@ -275,7 +275,7 @@ fi
 
 if [ "$GPU_DRIVER" == "AMD" ]; then
     echo "Installing AMD Drivers"
-    sudo pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon vulkan-radeon lib32-vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau
+    sudo pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver
 fi
 
 if [ "$GPU_DRIVER" == "INTEL" ]; then
@@ -301,10 +301,10 @@ sudo pacman -S spectacle --noconfirm
 sudo pacman -S cpupower --noconfirm
 
 #changing governor to ondemand
-[ ! -f /etc/default/cpupower.bak ] && sudo cp /etc/default/cpupower /etc/default/cpupower.bak
+[ ! -f /etc/default/cpupower-service.conf.bak ] && sudo cp /etc/default/cpupower-service.conf /etc/default/cpupower-service.conf.bak
 
-if grep -q "^#governor='ondemand'" /etc/default/cpupower; then
-    sudo sed -i "s/^#governor='ondemand'/governor='ondemand'/" /etc/default/cpupower
+if grep -q "^#governor='ondemand'" /etc/default/cpupower-service.conf; then
+    sudo sed -i "s/^#governor='ondemand'/governor='ondemand'/" /etc/default/cpupower-service.conf
 fi
 
 #media player
