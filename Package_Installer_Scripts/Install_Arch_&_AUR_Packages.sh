@@ -645,9 +645,13 @@ if [ "$INSTALL_PIPER_GIT" == "Yes" ]; then
 fi
 
 yay -Syyu
-yay -S mangojuice downgrade protontricks-git protonup-qt heroic-games-launcher-bin vkbasalt lib32-vkbasalt vesktop-bin --noconfirm
+yay -S mangojuice downgrade protontricks-git protonup-qt heroic-games-launcher-bin vkbasalt lib32-vkbasalt vesktop-bin protonplus --noconfirm
 
 flatpak install flathub com.google.Chrome
+
+#Currently Arch is missing Autologin option in KDE since Plasma update. Should be removed when its fixed.
+echo "Installing missing SDDM Autologin Option to KDE"
+sudo pacman -S sddm-kcm
 
 echo "Installation finished. Please reboot now !!!"
 
