@@ -1,0 +1,4 @@
+#vulkan
+gamemoderun %command% -vulkan -freq 165 -tickrate 128 -console -novid -language english -threads 8 -nojoy
+#opengl
+gamemoderun %command% -opengl -freq 165 -tickrate 128 -console -novid -language english -threads 8 -nojoy
