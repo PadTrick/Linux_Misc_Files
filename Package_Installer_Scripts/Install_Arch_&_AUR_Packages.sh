@@ -233,7 +233,7 @@ sudo pacman -S reflector pacman-contrib --noconfirm
 sudo pacman -Syu
 
 #installing yay
-sudo pacman -S git
+sudo pacman -S git fakeroot go
 
 WORKING_DIR=$(pwd)
 #Yet another yogurt. Pacman wrapper and AUR helper.

@@ -4,12 +4,11 @@ PROTON_LOG=+key,+keyboard
 #If Gamemode is not working correctly if launched through steam with gamemoderun, try
 LD_PRELOAD="/usr/\$LIB/libgamemodeauto.so.0${LD_PRELOAD:+:$LD_PRELOAD}" mangohud %command%
 
-#If some Game Launcher is rendered black try using --in-process-gpu
+#If some Game Launcher is rendered black try using --in-process-gpu (Warframe, Soulframe etc.)
 gamemoderun mangohud %command% --in-process-gpu
 
 #Commands i use for Wine/Proton Games. Maybe be different for you.
 
-#Intel ARC
 #Default works for most Games
 gamemoderun mangohud %command%
 gamemoderun MANGOHUD_CONFIG="fps_limit=60,no_display" mangohud %command% # maybe consider adding "fps_limit=60" to a seperate config file and use MANGOHUD_CONFIGFILE=~/.config/MangoHud/fps_limit.conf mangohud %command%
@@ -22,19 +21,6 @@ PROTON_USE_WINED3D=1 gamemoderun mangohud %command%
 #after you are logged in remove PROTON_USE_WINED3D=1
 gamemoderun mangohud %command%
 
-mangohud gamemoderun %command% VKD3D_CONFIG=dxr11,dxr
-
-#Intel Arc Death Stranding and maybe other Games, got a DX12 not Supported error with my normal commands. This fixes it. In heroic add all VKD3D commands as environment variable and not as commands
-#shouldnt be needed anymore
-VKD3D_SHADER_MODEL=6_6 VKD3D_FEATURE_LEVEL=12_1 VKD3D_DISABLE_EXTENSIONS=VK_EXT_mesh_shader gamemoderun mangohud %command%
-
-#Intel Helldivers 2
-#shouldnt be needed anymore
-LD_PRELOAD="" DXVK_CONFIG="d3d11.maxFeatureLevel = 12_1" gamemoderun mangohud %command% --use-d3d11 -USEALLAVAILABLECORES
-
-#Intel Red Dead Redemption 2
-#Proton Experimental ?
-DXVK_ASYNC=1 WINE_FULLSCREEN_FSR=1 WINEDLLOVERRIDES=dxgi=n,b PULSE_LATENCY_MSEC=60 gamemoderun mangohud %command% -adapter 0 -vulkan -USEALLAVAILABLECORES -cpuLoadRebalancing -ignorepipelinecache
 
 Ubisoft launcher Game shortcuts
 Tom Clancy's The Division™:
