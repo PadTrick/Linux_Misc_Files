@@ -3,7 +3,7 @@ clear
 echo "Installing Dev Tools"
 
 sudo pacman -Syyu
-sudo pacman -S godot krita blender gimp cmake github-cli zed --noconfirm
+sudo pacman -S godot krita blender gimp cmake github-cli zed automake autoconf --noconfirm
 #Disabled C# Stuff
 #sudo pacman -S dotnet-runtime dotnet-sdk dotnet-targeting-pack dotnet-targeting-pack-6.0 dotnet-host aspnet-runtime mono android-udev mono-msbuild mono-msbuild-sdkresolver --noconfirm
 
