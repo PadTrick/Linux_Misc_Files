@@ -1,6 +1,9 @@
 #For debugging keyboard layout
 PROTON_LOG=+key,+keyboard
 
+#Limit fps to 60 using dxvk
+DXVK_FRAME_RATE=60
+
 #If Gamemode is not working correctly if launched through steam with gamemoderun, try
 LD_PRELOAD="/usr/\$LIB/libgamemodeauto.so.0${LD_PRELOAD:+:$LD_PRELOAD}" mangohud %command%
 
