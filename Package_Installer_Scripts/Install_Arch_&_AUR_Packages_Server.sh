@@ -36,14 +36,14 @@ echo "Installing ..."
 #Install tools to check fastest Mirrors
 #Check Mirrors of France & Germany, select fastest 5 of these and write them into the mirrorlist
 #currently disabled
+sudo pacman -Syu
 sudo pacman -S reflector pacman-contrib --noconfirm
+sudo pacman -S git fakeroot go --noconfirm
 #sudo reflector --save /etc/pacman.d/mirrorlist --sort rate --country Germany --protocol https --latest 10
 
-sudo pacman -Syu
+
 
 #installing yay
-sudo pacman -S git fakeroot go
-
 WORKING_DIR=$(pwd)
 #Yet another yogurt. Pacman wrapper and AUR helper.
 echo "Installing yay"
@@ -79,7 +79,7 @@ sudo pacman -S intel-graphics-compiler intel-compute-runtime mesa lib32-mesa vul
 sudo pacman -S linux-firmware-qlogic --noconfirm
 
 #Some libs & tools which will be usefull for extracting several archive formats, installing packages from AUR or mounting NTFS drivers, screenshots etc
-sudo pacman -S gnome-keyring dkms linux-lts-headers linux-zen-headers cabextract curl glib2 gnome-desktop gtk3 mesa-utils unrar p7zip  psmisc  python-dbus python-distro python-evdev python-gobject python-lxml python-pillow python-pip python-lxml python-virtualenv fuse2 gawk polkit-kde-agent jre17-openjdk partitionmanager fastfetch gwenview kcalc qt5-imageformats qt6-imageformats btop nvtop vi less exfatprogs dosfstools --noconfirm
+sudo pacman -S gnome-keyring dkms linux-lts-headers linux-zen-headers cabextract curl glib2 gnome-desktop gtk3 mesa-utils unrar p7zip  psmisc  python-dbus python-distro python-evdev python-gobject python-lxml python-pillow python-pip python-lxml python-virtualenv fuse2 gawk polkit-kde-agent jre17-openjdk partitionmanager fastfetch gwenview kcalc qt5-imageformats qt6-imageformats btop intel-gpu-tools vi less exfatprogs dosfstools --noconfirm
 
 #utility to manage cpu frequency etc.
 sudo pacman -S cpupower --noconfirm
@@ -119,6 +119,8 @@ echo "All Firmwares are installed !!!"
 
 yay -Syyu
 yay -S downgrade python311 --noconfirm
+
+sudo pacman -S jellyfin-server jellyfin-web
 
 
 echo "Installation finished. Please reboot now !!!"

@@ -233,7 +233,7 @@ sudo pacman -S reflector pacman-contrib --noconfirm
 sudo pacman -Syu
 
 #installing yay
-sudo pacman -S git fakeroot go
+sudo pacman -S git fakeroot go make gcc
 
 WORKING_DIR=$(pwd)
 #Yet another yogurt. Pacman wrapper and AUR helper.
@@ -275,7 +275,7 @@ fi
 
 if [ "$GPU_DRIVER" == "AMD" ]; then
     echo "Installing AMD Drivers"
-    sudo pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver lact
+    sudo pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver lact rocm-smi-lib
 fi
 
 if [ "$GPU_DRIVER" == "INTEL" ]; then
