@@ -7,45 +7,49 @@ Perfect for Arch Linux users, gamers, and enthusiasts.
 
 ## 📂 **Structure & Contents**
 
-### 1. **Docs/**  
+### 1. **AUR_Packages/**  
+   - Local backups of critical/preferred AUR package configurations (`PKGBUILD`, patches)  
+   - Created as a secure fallback during AUR infrastructure instability, security incidents, or outages
+
+### 2. **Docs/**  
    - Text documents with solutions for common Linux problems  
    - Examples:  
      - `archinstaller_issues.txt` – Solutions for Arch Linux installation issues  
 
-### 2. **Firmwares/**  
+### 3. **Firmwares/**  
    - Proprietary/experimental firmware for hardware:  
      - Not available in official Arch Linux repositories  
 
-### 3. **Fonts/**  
+### 4. **Fonts/**  
    - Custom fonts + installation script  
    - Usage:  
      ```bash
      chmod +x Copy_Fonts_archlinux.sh && ./Copy_Fonts_archlinux.sh
      ```
 
-### 4. **GameConfigs/**  
+### 5. **GameConfigs/**  
    - Optimized settings for games:  
      - Graphics settings, keybindings, performance tweaks  
 
-### 5. **hw_setup/**  
+### 6. **hw_setup/**  
    - Hardware configuration scripts:  
      - `Pipewire_LineIn_Playback` – Line-In audio routing  
      - `Pipewire_playback_headphones_and_hdmi` – Headphones and HDMI audio routing
 
-### 6. **Increase_Shader_Cache/**  
+### 7. **Increase_Shader_Cache/**  
    - GPU cache tweaks (NVIDIA/AMD/Intel)
 
-### 7. **jdownloader2_installation/**  
+### 8. **jdownloader2_installation/**  
    - Installation script for JDownloader 2  
    - `README.txt` – Read if you encounter issues
 
-### 8. **Lutris_Installer_Scripts/**  
+### 9. **Lutris_Installer_Scripts/**  
    - Custom installation scripts for Lutris
 
-### 9. **Package_Installer_Scripts/**  
+### 10. **Package_Installer_Scripts/**  
    - Automated software installation
 
-### 10. **Scripts/**  
+### 11. **Scripts/**  
    - Useful small utilities and scripts
 
 ---
