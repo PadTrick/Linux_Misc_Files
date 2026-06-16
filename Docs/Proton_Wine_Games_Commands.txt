@@ -1,6 +1,9 @@
 #For debugging keyboard layout
 PROTON_LOG=+key,+keyboard
 
+#Sometimes i need gamescope for some older games to have some sort of borderless window working.
+gamemoderun MANGOHUD_CONFIGFILE=~/.config/MangoHud/fps_limit.conf mangohud gamescope -w 1920 -h 1080 -W 1920 -H 1080 -r 240 -S integer -f --force-grab-cursor -- %command%
+
 #Limit fps to 60 using dxvk
 DXVK_FRAME_RATE=60
 
