@@ -10,7 +10,7 @@ sudo pacman -S godot krita blender gimp cmake github-cli zed automake autoconf -
 yay -Syyu
 yay -S gnome-keyring visual-studio-code-bin pycharm-community-jre laigter rider rustrover rustrover-jre webstorm material-maker-bin blockbench-bin phpstorm friction --noconfirm
 #Disabled C# & Android Stuff
-#yay -S github-desktop-bin mono-basic android-sdk android-sdk-cmdline-tools-latest android-sdk-build-tools android-sdk-platform-tools android-sdk-cmake android-platform android-ndk ncurses5-compat-libs --noconfirm
+#yay -S github-desktop-bin mono-basic android-sdk android-sdk-cmdline-tools-latest android-sdk-build-tools android-sdk-platform-tools android-sdk-cmake android-platform android-ndk ncurses5-compat-libs lib32-ncurses5-compat-libs --noconfirm
 
 #dotnet new install "MonoGame.Templates.CSharp"
 #dotnet new install "Avalonia.Templates"
