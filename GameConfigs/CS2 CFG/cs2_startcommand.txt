@@ -1,7 +1,40 @@
 #Currently using this on Archlinux KDE Wayland to play 4:3 stretched
-SDL_VIDEO_DRIVER=wayland gamemoderun mangohud %command% -fullscreen_windowed -w 1280 -h 960 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
-SDL_VIDEO_DRIVER=wayland LD_PRELOAD="/usr/\$LIB/libgamemodeauto.so.0${LD_PRELOAD:+:$LD_PRELOAD}" mangohud %command% -fullscreen_windowed -w 1280 -h 960 -refresh 240 -console -novid -language english -threads 8 -nojoy -high
+SDL_VIDEO_DRIVER=wayland gamemoderun mangohud %command% -fullscreen_windowed -w 1280 -h 960 -refresh 240 -console -language english -threads 8 -nojoy
+SDL_VIDEO_DRIVER=wayland LD_PRELOAD="/usr/\$LIB/libgamemodeauto.so.0${LD_PRELOAD:+:$LD_PRELOAD}" mangohud %command% -fullscreen_windowed -w 1280 -h 960 -refresh 240 -console -language english -threads 8 -nojoy
+
+#new -threads alternative for better spreading tasks among REAL cpu cores
+#use the "real" cores in your launch commands, example 1:
+CPU NODE SOCKET CORE L1d:L1i:L2:L3
+  0    0      0    0 0:0:0:0
+  1    0      0    0 0:0:0:0
+  2    0      0    1 1:1:1:0
+  3    0      0    1 1:1:1:0
+
+#for the example 1 the command would be something like this:
+SDL_VIDEO_DRIVER=wayland gamemoderun mangohud taskset -c 0,2,4,6,8,10,12,14 %command% -fullscreen_windowed -w 1280 -h 960 -refresh 240 -console -language english -nojoy
+
+#check the CORE numbers with "lscpu -e" example from my cpu:
+#CPU NODE SOCKET CORE L1d:L1i:L2:L3
+#  0    0      0    0 0:0:0:0
+#  1    0      0    1 1:1:1:0
+#  2    0      0    2 2:2:2:0
+#  3    0      0    3 3:3:3:0
+#  4    0      0    4 4:4:4:0
+#  5    0      0    5 5:5:5:0
+#  6    0      0    6 6:6:6:0
+#  7    0      0    7 7:7:7:0
+#  8    0      0    0 0:0:0:0
+#  9    0      0    1 1:1:1:0
+# 10    0      0    2 2:2:2:0
+# 11    0      0    3 3:3:3:0
+# 12    0      0    4 4:4:4:0
+# 13    0      0    5 5:5:5:0
+# 14    0      0    6 6:6:6:0
+# 15    0      0    7 7:7:7:0
+
+#use the "real" cores in your launch commands, for my example it would be:
+SDL_VIDEO_DRIVER=wayland gamemoderun mangohud taskset -c 0-7 %command% -fullscreen_windowed -w 1280 -h 960 -refresh 240 -console -language english -nojoy
 
 # If you experience audio issues like cutouts, try adding "-audiodriver alsa -sdlaudiodriver" at the end.
 # I only had this issue while using PulseAudio; it disappeared after switching to PipeWire.
-SDL_VIDEO_DRIVER=wayland gamemoderun mangohud %command% -fullscreen_windowed -w 1280 -h 960 -refresh 240 -console -novid -language english -threads 8 -nojoy -high -audiodriver alsa -sdlaudiodriver
+SDL_VIDEO_DRIVER=wayland gamemoderun mangohud %command% -fullscreen_windowed -w 1280 -h 960 -refresh 240 -console -language english -threads 8 -nojoy -audiodriver alsa -sdlaudiodriver
