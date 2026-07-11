@@ -1,0 +1,12 @@
+#to fix it run the following commands:
+
+cp /usr/share/applications/vivaldi-stable.desktop ~/.local/share/applications/
+
+sed -i 's|Exec=/usr/bin/vivaldi-stable|Exec=/usr/bin/vivaldi-stable --ozone-platform=x11|g' ~/.local/share/applications/vivaldi-stable.desktop
+
+kbuildsycoca6
+#or
+kbuildsycoca5
+
+#after that close all vivaldi processes
+killall vivaldi-bin
