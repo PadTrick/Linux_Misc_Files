@@ -645,7 +645,7 @@ if [ "$INSTALL_PIPER_GIT" == "Yes" ]; then
 fi
 
 yay -Syyu
-yay -S mangojuice downgrade protontricks-git protonup-qt heroic-games-launcher-bin vkbasalt lib32-vkbasalt vesktop-bin protonplus --noconfirm
+yay -S mangojuice downgrade protontricks-git protonup-qt heroic-games-launcher-bin vkbasalt lib32-vkbasalt discord protonplus --noconfirm
 
 flatpak install flathub com.google.Chrome
 
