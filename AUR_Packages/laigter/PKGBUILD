@@ -1,0 +1,27 @@
+pkgname=laigter
+pkgver=1.14.0
+pkgrel=1
+pkgdesc="Automatic normal map generator for sprites!"
+arch=('x86_64')
+url="https://github.com/azagaya/laigter"
+license=('GPL3')
+depends=(
+	'qt6-base'
+	'hicolor-icon-theme'
+)
+makedepends=('qt6-tools')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/azagaya/laigter/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('e1dc377d7b4cc85e9d98f5fcad88cbd756425498747a8e3a688e1761ea34b405')
+
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+    mkdir -p build
+    cd build
+    qmake6 PREFIX="$pkgdir/usr" ../
+    make -j$(nproc)
+}
+
+package() {
+    cd "$srcdir/$pkgname-$pkgver/build"
+    make install
+}
